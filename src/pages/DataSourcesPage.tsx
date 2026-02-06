@@ -37,7 +37,7 @@ export const DataSourcesPage = () => (
         <EmphasisTextContainer>
           <MiniBar />
           <EmphasisTextParagraph>
-            The GRI Risk Viewer draws on open data sources which are displayed in the maps and
+            The platform draws on open data sources which are displayed in the maps and
             available for download.
           </EmphasisTextParagraph>
         </EmphasisTextContainer>
