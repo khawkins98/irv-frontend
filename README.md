@@ -2,6 +2,14 @@
 
 **Exploratory proof of concept.** UNDRR-branded fork of [nismod/irv-frontend](https://github.com/nismod/irv-frontend) investigating how the GRI Risk Viewer can be rebranded for UNDRR use. Branding changes are on the [`feat/undrr-branding`](https://github.com/khawkins98/irv-frontend/tree/feat/undrr-branding) branch. Orchestration lives in [map-demo](https://github.com/khawkins98/map-demo).
 
+## Open Source Heritage
+
+This project is built on the **Global Resilience Index (GRI)** infrastructure risk viewer, developed as open source software by the [Oxford Programme for Sustainable Infrastructure Systems (OPSIS)](https://opsis.eci.ox.ac.uk/) and collaborators. The original codebase — [nismod/irv-frontend](https://github.com/nismod/irv-frontend) — represents years of research-driven engineering in climate risk visualisation.
+
+UNDRR is leveraging that open source heritage to deliver risk information through its own platform. This fork adds UNDRR branding, Mangrove design system alignment, and platform-specific configuration on top of the upstream viewer. The core architecture, data model and visualisation logic remain the work of the original authors.
+
+**Contributors should preserve this relationship.** UNDRR-specific changes are layered on, not baked in. Every modification is marked with `// UNDRR:` comments so that changes can be tracked, reconciled with upstream, and potentially contributed back. When in doubt, prefer configuration over code modification, and never remove attribution to the Oxford/OPSIS team.
+
 ## UNDRR Changes from Upstream
 
 All UNDRR-specific changes are marked with `// UNDRR:` comments for future upstream reconciliation.
