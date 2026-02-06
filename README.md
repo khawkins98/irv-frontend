@@ -1,6 +1,6 @@
-# Frontend for `infra-risk-vis`
+# UNDRR Risk Information Platform — Frontend
 
-React app, frontend for https://global.infrastructureresilience.org/.
+UNDRR-branded fork of [nismod/irv-frontend](https://github.com/nismod/irv-frontend). Branding changes are on the [`feat/undrr-branding`](https://github.com/khawkins98/irv-frontend/tree/feat/undrr-branding) branch.
 
 ## Set up Husky
 
@@ -18,108 +18,77 @@ Token to install.
 
 In order to install the project's dependencies:
 
-- Create a [GitHub Personal Access Token
-  (classic)](https://github.com/settings/tokens/new) with the `read:packages`
-  permission selected. It's recommended to set an expiration date for the token
-  and repeat this process when the token expires.
+If you have the [GitHub CLI](https://cli.github.com/) installed:
 
-If using `npm` natively rather than in a docker container, then:
+```bash
+# Add read:packages scope (one-time)
+gh auth refresh -h github.com -s read:packages
 
-- Copy the token and instruct npm to [use it when authenticating to the GitHub
-  registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#authenticating-with-a-personal-access-token).
-  To do this on Linux:
+# Set the token for npm
+export GH_NPM_AUTH=$(gh auth token)
+npm ci
+```
 
-  1.  Create an `.npmrc` file if one doesn't already exist in your home directory (`~/.npmrc`)
-  2.  Place the following lines in the file:
+Alternatively, create a [GitHub Personal Access Token
+(classic)](https://github.com/settings/tokens/new) with the `read:packages`
+permission and add it to `~/.npmrc`:
 
-  ```
-  @nismod:registry=https://npm.pkg.github.com
-  //npm.pkg.github.com/:_authToken=TOKENHERE
-  ```
-
-- When you run `npm install` to install dependencies, things should already
-  work. This repo contains an `.npmrc` file that specifies how packages should
-  be accessed for the `@nismod` scope.
+```
+@nismod:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=TOKENHERE
+```
 
 ## Containers
 
 See `./containers` for Docker configuration.
 
-As described in the section above, the GitHub NPM registry auth token needs to
-be available during build so that dependencies from the `@nismod` scope can be
-installed.
+The Dockerfiles use a [Docker BuildKit secret](https://docs.docker.com/build/buildkit/)
+named `GH_TOKEN` to authenticate with the GitHub npm registry during build.
 
-The `Dockerfiles` are set up to accept a [Docker
-secret](https://docs.docker.com/engine/swarm/secrets/) named `GH_TOKEN`. This
-can be passed using a path to a local file that contains the token. For steps to
-obtain a token, see the previous section.
-
-Note that passing `--secret` during build is a [Docker
-BuildKit](https://docs.docker.com/build/buildkit/) feature, hence the need to
-install [docker buildx](https://github.com/docker/buildx) for building locally,
-and to pass the `DOCKER_BUILDKIT=1` variable before the `docker build` command.
-
-For example, to build the container (replace `/PATH/TO/TOKEN`, but not
-`GH_TOKEN`):
+**Build the production image:**
 
 ```bash
-DOCKER_BUILDKIT=1 docker build \
-   --secret id=GH_TOKEN,src=/PATH/TO/TOKEN \
-   -f containers/Dockerfile-dev \
-   -t ghcr.io/nismod/irv-frontend:0.37-dev .
+GH_TOKEN=$(gh auth token) docker build \
+  --secret id=GH_TOKEN,env=GH_TOKEN \
+  -f containers/Dockerfile-prod \
+  -t ghcr.io/khawkins98/irv-frontend:0.1.0-undrr .
 ```
 
-To run:
+**Build the dev image:**
 
 ```bash
-docker run -it -p 5173:5173 -v $(pwd)/src:/app/src ghcr.io/nismod/irv-frontend:0.37-dev
+GH_TOKEN=$(gh auth token) docker build \
+  --secret id=GH_TOKEN,env=GH_TOKEN \
+  -f containers/Dockerfile-dev \
+  -t ghcr.io/khawkins98/irv-frontend:dev .
 ```
 
-Or to run inside an infra-risk-vis network (allowing DNS resolution for
-connection to the backend services via the vite reverse proxy):
+**Run the dev container:**
 
 ```bash
-docker run -it -p 5173:5173 -v $(pwd)/src:/app/src --network infra-risk-vis_default ghcr.io/nismod/irv-frontend:0.37-dev
+docker run -it -p 5173:5173 -v $(pwd)/src:/app/src ghcr.io/khawkins98/irv-frontend:dev
 ```
 
 Then visit http://localhost:5173
 
 ## Release an update
 
-The easiest way to make the updated code available is to push/merge to `main`,
-then make a GitHub Release with a new tag, which will be used as the version number.
+Create a GitHub Release on this fork to trigger the CI workflow, which builds and pushes to GHCR:
 
-- test changes locally (`npm test`, and manual check)
-- push/merge to `main`
-- review logs since previous release `git log 0.36..HEAD`
-- [Draft a new release](https://github.com/nismod/irv-frontend/releases)
-- Choose a tag > create a new tag with new version, e.g. `0.37`
-- summarise changes as lists of Features and Fixes
-- Publish Release
-- Wait for [Actions](https://github.com/nismod/irv-frontend/actions) to complete
-- Update container image in [docker-compose.yml](https://github.com/nismod/infra-risk-vis/blob/master/docker-compose-prod-deploy.yaml)
-- Restart service `docker compose -f docker-compose-prod-deploy.yaml up web-server -d`
+1. Test changes locally (`npm test`, and manual check)
+2. Push/merge to `feat/undrr-branding`
+3. [Draft a new release](https://github.com/khawkins98/irv-frontend/releases) with a new tag (e.g. `0.1.0-undrr`)
+4. Wait for [Actions](https://github.com/khawkins98/irv-frontend/actions) to complete
+5. Update `FRONTEND_IMAGE` in `map-demo/.env` or `docker-compose.yaml` if the tag changed
 
-Alternatively, to build and push an update to the container registry manually:
-
-- Log in to the container registry, see
-  https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry
-- Build and push the production container
-  - replace `/PATH/TO/TOKEN` with the path to a file containing GitHub personal
-    access token with `write:packages` permissions)
-  - replace `0.37` with the latest version number
+**Manual push to GHCR:**
 
 ```bash
-DOCKER_BUILDKIT=1 docker build \
-   --secret id=GH_TOKEN,src=/PATH/TO/TOKEN \
-   -f containers/Dockerfile-prod \
-   -t ghcr.io/nismod/irv-frontend:0.37 .
-
-docker push ghcr.io/nismod/irv-frontend:0.37
+echo $(gh auth token) | docker login ghcr.io -u khawkins98 --password-stdin
+docker push ghcr.io/khawkins98/irv-frontend:0.1.0-undrr
 ```
 
-See https://github.com/nismod/infra-risk-vis/ for `docker-compose.yml` and how
-the frontend is composed with other services.
+See [map-demo](https://github.com/khawkins98/map-demo) for the orchestration setup.
 
 ## Development
 
