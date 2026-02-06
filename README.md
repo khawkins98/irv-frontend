@@ -1,6 +1,6 @@
 # UNDRR Risk Information Platform — Frontend
 
-UNDRR-branded fork of [nismod/irv-frontend](https://github.com/nismod/irv-frontend). Branding changes are on the [`feat/undrr-branding`](https://github.com/khawkins98/irv-frontend/tree/feat/undrr-branding) branch.
+**Exploratory proof of concept.** UNDRR-branded fork of [nismod/irv-frontend](https://github.com/nismod/irv-frontend) investigating how the GRI Risk Viewer can be rebranded for UNDRR use. Branding changes are on the [`feat/undrr-branding`](https://github.com/khawkins98/irv-frontend/tree/feat/undrr-branding) branch. Orchestration lives in [map-demo](https://github.com/khawkins98/map-demo).
 
 ## Set up Husky
 
