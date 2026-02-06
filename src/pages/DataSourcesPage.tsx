@@ -36,11 +36,26 @@ export const DataSourcesPage = () => (
       <ArticleSection>
         <EmphasisTextContainer>
           <MiniBar />
+          {/* UNDRR: Updated intro to reflect collaborative, multi-source data approach */}
           <EmphasisTextParagraph>
-            The platform draws on open data sources which are displayed in the maps and
-            available for download.
+            This platform draws on open data from multiple global initiatives including the
+            Global Earthquake Model (GEM) Foundation, the Joint Research Centre (JRC), the
+            Global Facility for Disaster Risk Reduction (GFDRR), UNEP-GRID (GIRI), and others.
+            Data sources are listed below with full citations, licenses, and methodology notes.
           </EmphasisTextParagraph>
         </EmphasisTextContainer>
+        {/* UNDRR: Methodology overview */}
+        <ArticleParagraph>
+          The platform serves raster hazard and exposure data as Cloud-Optimized GeoTIFFs via
+          the Terracotta tile server. Hazard maps show return-period-based intensity measures
+          (flood depth, peak ground acceleration, wind speed, landslide frequency) and are being
+          progressively loaded across 8 target hazards: Earthquake, River Flooding, Coastal
+          Flooding, Tropical Cyclone, Tsunami, Extreme Heat, Drought, and Landslide. Core risk
+          analytics include Average Annual Loss (AAL) and Probable Maximum Loss (PML). Datasets
+          marked <strong>Active</strong> below are loaded and visible on the map;
+          those marked <strong>Planned</strong> are listed for reference and will be added
+          as data pipelines are completed.
+        </ArticleParagraph>
         <ArticleParagraph>
           <Link id="contents" href="#contents">
             Contents
@@ -94,6 +109,8 @@ export const DataSourcesPage = () => (
           <Table aria-label="simple table">
             <TableHead>
               <TableRow>
+                {/* UNDRR: Added Status column */}
+                <TableCell>Status</TableCell>
                 <TableCell>Dataset</TableCell>
                 <TableCell>Source</TableCell>
                 <TableCell>Citation</TableCell>
@@ -103,6 +120,7 @@ export const DataSourcesPage = () => (
             </TableHead>
             <TableBody>
               <TableRow>
+                <TableCell>Planned</TableCell>
                 <TableCell>Coastal and River flooding</TableCell>
                 <TableCell>
                   <ExtLink href="https://www.wri.org/data/aqueduct-floods-hazard-maps">
@@ -134,6 +152,7 @@ export const DataSourcesPage = () => (
               </TableRow>
 
               <TableRow>
+                <TableCell>Active</TableCell>
                 <TableCell>River flooding</TableCell>
                 <TableCell>
                   <ExtLink href="data.europa.eu/89h/jrc-floods-floodmapgl_rp50y-tif">
@@ -176,6 +195,7 @@ export const DataSourcesPage = () => (
               </TableRow>
 
               <TableRow>
+                <TableCell>Planned</TableCell>
                 <TableCell>Extreme Heat and Drought</TableCell>
                 <TableCell>
                   <ExtLink href="https://data.isimip.org/search/tree/ISIMIP2b/DerivedOutputData/lange2020/">
@@ -227,6 +247,7 @@ export const DataSourcesPage = () => (
                 </TableCell>
               </TableRow>
               <TableRow>
+                <TableCell>Planned</TableCell>
                 <TableCell>Tropical Cyclones (STORM)</TableCell>
                 <TableCell>
                   STORM Tropical Cyclone Maximum Windspeeds,{' '}
@@ -267,6 +288,7 @@ export const DataSourcesPage = () => (
                 </TableCell>
               </TableRow>
               <TableRow>
+                <TableCell>Planned</TableCell>
                 <TableCell>Tropical Cyclones (IRIS)</TableCell>
                 <TableCell>
                   <ExtLink href="https://www.imperial.ac.uk/grantham/research/climate-science/modelling-tropical-cyclones/">
@@ -295,6 +317,7 @@ export const DataSourcesPage = () => (
                 </TableCell>
               </TableRow>
               <TableRow>
+                <TableCell>Active</TableCell>
                 <TableCell>Seismic Risk</TableCell>
                 <TableCell>
                   <ExtLink href="https://www.globalquakemodel.org/gem-maps/global-earthquake-hazard-map">
@@ -330,6 +353,7 @@ export const DataSourcesPage = () => (
                 </TableCell>
               </TableRow>
               <TableRow>
+                <TableCell>Active</TableCell>
                 <TableCell>Landslide</TableCell>
                 <TableCell>
                   <ExtLink href="https://datacatalog.worldbank.org/search/dataset/0037584/Global-landslide-hazard-map">
@@ -398,6 +422,8 @@ export const DataSourcesPage = () => (
           <Table aria-label="simple table">
             <TableHead>
               <TableRow>
+                {/* UNDRR: Added Status column */}
+                <TableCell>Status</TableCell>
                 <TableCell>Dataset</TableCell>
                 <TableCell>Source</TableCell>
                 <TableCell>Citation</TableCell>
@@ -407,6 +433,7 @@ export const DataSourcesPage = () => (
             </TableHead>
             <TableBody>
               <TableRow>
+                <TableCell>Planned</TableCell>
                 <TableCell>Roads and Rail</TableCell>
                 <TableCell>
                   <ExtLink href="https://planet.openstreetmap.org/">OpenStreetMap</ExtLink>
@@ -425,6 +452,7 @@ export const DataSourcesPage = () => (
               </TableRow>
 
               <TableRow>
+                <TableCell>Planned</TableCell>
                 <TableCell>
                   <ExtLink href="https://doi.org/10.5281/zenodo.3628142">
                     Gridfinder Power Transmission lines
@@ -444,6 +472,7 @@ export const DataSourcesPage = () => (
               </TableRow>
 
               <TableRow>
+                <TableCell>Planned</TableCell>
                 <TableCell>Power plants</TableCell>
                 <TableCell>
                   <ExtLink href="https://datasets.wri.org/dataset/globalpowerplantdatabase">
@@ -469,6 +498,7 @@ export const DataSourcesPage = () => (
               </TableRow>
 
               <TableRow>
+                <TableCell>Active</TableCell>
                 <TableCell>Population and built-up area</TableCell>
                 <TableCell>JRC Global Human Settlement Layer</TableCell>
                 <TableCell>
@@ -561,6 +591,7 @@ export const DataSourcesPage = () => (
               </TableRow>
 
               <TableRow>
+                <TableCell>Planned</TableCell>
                 <TableCell>Health site locations</TableCell>
                 <TableCell>
                   <ExtLink href="http://healthsites.io">healthsites.io</ExtLink>
@@ -583,6 +614,7 @@ export const DataSourcesPage = () => (
               </TableRow>
 
               <TableRow>
+                <TableCell>Planned</TableCell>
                 <TableCell>Cement and Steel Production Assets</TableCell>
                 <TableCell>
                   <ExtLink href="https://www.cgfi.ac.uk/spatial-finance-initiative/database-downloads/">
@@ -611,6 +643,7 @@ export const DataSourcesPage = () => (
               </TableRow>
 
               <TableRow>
+                <TableCell>Planned</TableCell>
                 <TableCell>Land Cover</TableCell>
                 <TableCell>
                   <ExtLink href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-land-cover?tab=overview">
@@ -632,6 +665,7 @@ export const DataSourcesPage = () => (
               </TableRow>
 
               <TableRow>
+                <TableCell>Planned</TableCell>
                 <TableCell>Topography</TableCell>
                 <TableCell>
                   <ExtLink href="https://doi.org/10.5281/zenodo.1447210">
@@ -657,6 +691,7 @@ export const DataSourcesPage = () => (
               </TableRow>
 
               <TableRow>
+                <TableCell>Planned</TableCell>
                 <TableCell>Soil Organic Carbon stock</TableCell>
                 <TableCell>
                   <ExtLink href="https://soilgrids.org/">SoilGrids 2.0</ExtLink>
@@ -690,6 +725,8 @@ export const DataSourcesPage = () => (
           <Table aria-label="simple table">
             <TableHead>
               <TableRow>
+                {/* UNDRR: Added Status column */}
+                <TableCell>Status</TableCell>
                 <TableCell>Dataset</TableCell>
                 <TableCell>Source</TableCell>
                 <TableCell>Citation</TableCell>
@@ -699,6 +736,7 @@ export const DataSourcesPage = () => (
             </TableHead>
             <TableBody>
               <TableRow>
+                <TableCell>Planned</TableCell>
                 <TableCell>Access to Healthcare</TableCell>
                 <TableCell>
                   <ExtLink href="https://www.nature.com/articles/s41591-020-1059-1">
@@ -717,6 +755,7 @@ export const DataSourcesPage = () => (
               </TableRow>
 
               <TableRow>
+                <TableCell>Planned</TableCell>
                 <TableCell>Human Development (Subnational)</TableCell>
                 <TableCell>
                   <ExtLink href="https://globaldatalab.org/shdi/">
@@ -765,6 +804,7 @@ export const DataSourcesPage = () => (
                 </TableCell>
               </TableRow>
               <TableRow>
+                <TableCell>Planned</TableCell>
                 <TableCell>Human Development (Grid)</TableCell>
                 <TableCell>
                   <ExtLink href="https://www.mosaiks.org/hdi">
@@ -797,6 +837,7 @@ export const DataSourcesPage = () => (
                 </TableCell>
               </TableRow>
               <TableRow>
+                <TableCell>Planned</TableCell>
                 <TableCell>Relative Wealth Index</TableCell>
                 <TableCell>
                   <ExtLink href="https://dataforgood.facebook.com/dfg/tools/relative-wealth-index">
@@ -824,6 +865,7 @@ export const DataSourcesPage = () => (
                 </TableCell>
               </TableRow>
               <TableRow>
+                <TableCell>Planned</TableCell>
                 <TableCell>Biodiversity</TableCell>
                 <TableCell>
                   <ExtLink href="https://data.nhm.ac.uk/dataset/global-map-of-the-biodiversity-intactness-index-from-newbold-et-al-2016-science/resource/8531b4dc-bd44-4586-8216-47b3b8d60e85">
@@ -843,6 +885,7 @@ export const DataSourcesPage = () => (
                 <TableCell>3 arcsec grid</TableCell>
               </TableRow>
               <TableRow>
+                <TableCell>Planned</TableCell>
                 <TableCell>Protected Areas</TableCell>
                 <TableCell>
                   <ExtLink href="https://www.protectedplanet.net/en/thematic-areas/wdpa?tab=WDPA">
@@ -864,6 +907,7 @@ export const DataSourcesPage = () => (
                 <TableCell>Protected area locations as points/polygons</TableCell>
               </TableRow>
               <TableRow>
+                <TableCell>Planned</TableCell>
                 <TableCell>Forest Integrity</TableCell>
                 <TableCell>
                   <ExtLink href="https://www.nature.com/articles/s41467-020-19493-3">
@@ -920,6 +964,8 @@ export const DataSourcesPage = () => (
           <Table aria-label="simple table">
             <TableHead>
               <TableRow>
+                {/* UNDRR: Added Status column */}
+                <TableCell>Status</TableCell>
                 <TableCell>Dataset</TableCell>
                 <TableCell>Source</TableCell>
                 <TableCell>Citation</TableCell>
@@ -929,6 +975,7 @@ export const DataSourcesPage = () => (
             </TableHead>
             <TableBody>
               <TableRow>
+                <TableCell>Planned</TableCell>
                 <TableCell>Cooling demand</TableCell>
                 <TableCell>
                   Global CDD difference between 1.5°C and 2°C global warming scenarios.
@@ -977,6 +1024,7 @@ export const DataSourcesPage = () => (
                 </TableCell>
               </TableRow>
               <TableRow>
+                <TableCell>Planned</TableCell>
                 <TableCell>Population Exposure</TableCell>
                 <TableCell>Derived from ISIMIP hazards and GHSL population</TableCell>
                 <TableCell>
@@ -999,6 +1047,7 @@ export const DataSourcesPage = () => (
                 </TableCell>
               </TableRow>
               <TableRow>
+                <TableCell>Planned</TableCell>
                 <TableCell>Infrastructure Risk</TableCell>
                 <TableCell>Derived from exposure and hazard layers</TableCell>
                 <TableCell>
@@ -1013,6 +1062,7 @@ export const DataSourcesPage = () => (
                 </TableCell>
               </TableRow>
               <TableRow>
+                <TableCell>Planned</TableCell>
                 <TableCell>Regional Summary</TableCell>
                 <TableCell>Derived from exposure and hazard layers</TableCell>
                 <TableCell>

@@ -17,7 +17,7 @@ import {
   EarthquakeControl,
   // UNDRR: Uncomment imports below as datasets are loaded via ETL:
   // CoastalControl, CycloneControl, DroughtControl, ExtremeHeatControl,
-  // FluvialControl, LandslideControl,
+  FluvialControl, LandslideControl,
 } from './sections/hazards/HazardsControl';
 // UNDRR: Uncomment as datasets are loaded:
 // import { BuildingDensityControl } from './sections/buildings/BuildingDensityControl';
@@ -72,12 +72,15 @@ const HazardsSection = () => (
     <Layer path="earthquake" title="Earthquakes">
       <EarthquakeControl />
     </Layer>
-    {/* UNDRR: Layers below are commented out because their raster data has not
-        been loaded via the ETL pipeline. Uncomment and restore imports as
-        datasets are added. See map-demo/docs/data-loading.md for instructions.
     <Layer path="fluvial" title="River Flooding">
       <FluvialControl />
     </Layer>
+    <Layer path="landslide" title="Landslide">
+      <LandslideControl />
+    </Layer>
+    {/* UNDRR: Layers below are commented out because their raster data has not
+        been loaded via the ETL pipeline. Uncomment and restore imports as
+        datasets are added. See map-demo/docs/data-loading.md for instructions.
     <Layer path="coastal" title="Coastal Flooding (Aqueduct)">
       <CoastalControl />
     </Layer>
@@ -92,9 +95,6 @@ const HazardsSection = () => (
     </Layer>
     <Layer path="drought" title="Droughts">
       <DroughtControl />
-    </Layer>
-    <Layer path="landslide" title="Landslide">
-      <LandslideControl />
     </Layer>
     <Layer path="wildfire" title="Wildfires" disabled />
     */}
