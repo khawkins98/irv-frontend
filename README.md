@@ -2,6 +2,25 @@
 
 **Exploratory proof of concept.** UNDRR-branded fork of [nismod/irv-frontend](https://github.com/nismod/irv-frontend) investigating how the GRI Risk Viewer can be rebranded for UNDRR use. Branding changes are on the [`feat/undrr-branding`](https://github.com/khawkins98/irv-frontend/tree/feat/undrr-branding) branch. Orchestration lives in [map-demo](https://github.com/khawkins98/map-demo).
 
+## UNDRR Changes from Upstream
+
+All UNDRR-specific changes are marked with `// UNDRR:` comments for future upstream reconciliation.
+
+| File | What changed |
+|------|-------------|
+| `src/sidebar/SidebarContent.tsx` | Only Earthquakes and Population layers active; all others commented out |
+| `src/Nav.tsx` | Vulnerability/Risk/Adaptation nav tabs hidden; UNDRR logo and brand colors |
+| `src/state/data-domains/sources.ts` | Returns `null` instead of throwing when a raster domain has no data |
+| `src/state/data-domains/hazards.ts` | Returns minimal defaults when no raster data is loaded for a hazard |
+| `src/map/use-basemap-style.ts` | Guards against race condition with base map label layers |
+| `src/theme.ts` | UNDRR colors, Roboto fonts |
+| `src/pages/IntroPage.tsx` | UNDRR landing page content |
+| `src/pages/PageFooter.tsx` | UNDRR branding and links |
+| `src/pages/AboutPage.tsx` | UNDRR attribution |
+| `index.html` | Page title, UNDRR analytics script |
+
+To re-enable commented-out layers as datasets are loaded, see the [data loading guide](https://github.com/khawkins98/map-demo/blob/main/docs/data-loading.md) in the map-demo repo.
+
 ## Set up Husky
 
 When running `npm install` in development, the `prepare` script should be run
