@@ -8,7 +8,6 @@ import {
   ArticleContentContainer,
   ArticleParagraph,
   ArticleSection,
-  ArticleSectionHeader,
   EmphasisTextContainer,
   EmphasisTextParagraph,
   MiniBar,
@@ -20,7 +19,7 @@ export const IntroPage = () => {
   return (
     <ArticleContainer>
       <HeadingBox>
-        <HeadingBoxText>Global Climate-Related Risk Analytics</HeadingBoxText>
+        <HeadingBoxText>Global Risk Information Platform</HeadingBoxText>
       </HeadingBox>
 
       <div className="home" style={{ height: '16rem' }}></div>
@@ -30,21 +29,22 @@ export const IntroPage = () => {
           <EmphasisTextContainer>
             <MiniBar />
             <EmphasisTextParagraph>
-              The Global Resilience Index (GRI) Risk Viewer is a data and analytics portal covering
+              The UNDRR Risk Information Platform is a data and analytics portal covering
               hazards, exposure, vulnerability and risk to infrastructure and people around the
               world.
             </EmphasisTextParagraph>
 
             <EmphasisTextParagraph>
-              This tool aims to support climate adaptation decision-making by identifying spatial
-              vulnerabilities and risks under current and future climate scenarios.
+              This tool supports disaster risk reduction and climate adaptation decision-making
+              by identifying spatial vulnerabilities and risks under current and future climate
+              scenarios.
             </EmphasisTextParagraph>
           </EmphasisTextContainer>
           <ArticleParagraph>
-            The GRI Risk Viewer aims to support governments, communities and investors around the
-            world to adapt to climate change by making open data &ndash; related to climate hazards,
-            exposure and vulnerabilities &ndash; available for visualisation and download, to build
-            shared understanding across different scales.
+            The platform aims to support governments, communities and investors around the
+            world in reducing disaster risk and adapting to climate change by making open data
+            &ndash; related to climate hazards, exposure and vulnerabilities &ndash; available
+            for visualisation and download, to build shared understanding across different scales.
           </ArticleParagraph>
           <ArticleParagraph>
             This in turn enables the identification of key opportunities as well as social
@@ -109,11 +109,15 @@ export const IntroPage = () => {
           </AppLinkButton>
 
           <ArticleParagraph>
-            The research, analysis and development of this site is led by researchers in the{' '}
+            This platform is provided by the{' '}
+            <ExtLink href="https://www.undrr.org/">
+              United Nations Office for Disaster Risk Reduction (UNDRR)
+            </ExtLink>
+            , with data analysis and development supported by the{' '}
             <ExtLink href="https://opsis.eci.ox.ac.uk/">
               Oxford Programme for Sustainable Infrastructure Systems
-            </ExtLink>{' '}
-            at the University of Oxford.
+            </ExtLink>
+            .
           </ArticleParagraph>
 
           <Stack
@@ -122,27 +126,19 @@ export const IntroPage = () => {
             divider={<Divider orientation="vertical" flexItem />}
             justifyContent="center"
             alignItems="center"
-            spacing={2}
+            spacing={4}
             mb={6}
           >
-            <ExtLink href="https://opsis.eci.ox.ac.uk">
+            <ExtLink href="https://www.undrr.org/">
               <img
-                height="120"
-                src="/logo-opsis.png"
-                alt="Oxford Programme for Sustainable Infrastructure Systems"
+                height="60"
+                src="/logo-undrr.png"
+                alt="United Nations Office for Disaster Risk Reduction"
               />
             </ExtLink>
           </Stack>
         </ArticleSection>
 
-        <ArticleSection>
-          <ArticleSectionHeader>Photo Credit</ArticleSectionHeader>
-          <ArticleParagraph>
-            Hurricane Irma, 7 September 2017. Data: MODIS/Terra (NASA WorldView). Processed by Antti
-            Lipponen (<ExtLink href="https://twitter.com/anttilip">@anttilip</ExtLink>){' '}
-            <ExtLink href="https://creativecommons.org/licenses/by/2.0/">CC-BY</ExtLink>
-          </ArticleParagraph>
-        </ArticleSection>
       </ArticleContentContainer>
     </ArticleContainer>
   );

@@ -22,10 +22,10 @@ const BaseLink = styled(Link)({
 const DrawerLink = styled(BaseLink)({
   color: '#ffffff',
   '&:hover,&:focus': {
-    backgroundColor: '#213621',
+    backgroundColor: '#3372a7',
   },
   '&:active,&.active': {
-    backgroundColor: '#213621',
+    backgroundColor: '#3372a7',
   },
 }) as typeof BaseLink;
 
@@ -117,7 +117,7 @@ const MobileDrawer = styled(Drawer)({
   [`& .MuiDrawer-paper`]: {
     width: drawerWidth,
     boxSizing: 'border-box',
-    backgroundColor: 'rgb(23,38,23)',
+    backgroundColor: '#004f91',
   },
 });
 
@@ -135,7 +135,7 @@ const MobileNavContent: FC<{ height: number }> = ({ height }) => {
       </IconButton>
 
       <ToolbarNavLink to="/" onClick={closeDrawer}>
-        GRI Risk Viewer
+        <img src="/logo-undrr.png" alt="UNDRR" height="30" style={{ verticalAlign: 'middle', filter: 'brightness(0) invert(1)' }} />
       </ToolbarNavLink>
 
       <GrowingDivider />
@@ -166,7 +166,9 @@ const MobileNavContent: FC<{ height: number }> = ({ height }) => {
 
 const DesktopNavContent = () => (
   <>
-    <ToolbarNavLink to="/">GRI Risk Viewer</ToolbarNavLink>
+    <ToolbarNavLink to="/">
+      <img src="/logo-undrr.png" alt="UNDRR" height="30" style={{ verticalAlign: 'middle', filter: 'brightness(0) invert(1)' }} />
+    </ToolbarNavLink>
 
     {navItems.map(({ to, title }) => (
       <ToolbarNavLink key={to} to={to}>
@@ -194,10 +196,10 @@ export const Nav: FC<{ height: number }> = ({ height }) => {
       <Toolbar
         variant="dense"
         sx={{
-          borderTopColor: 'rgb(142,193,85)',
+          borderTopColor: '#eb752a',
           borderTopWidth: topStripeHeight,
           borderTopStyle: 'solid',
-          backgroundColor: 'rgb(23,38,23)',
+          backgroundColor: '#004f91',
           height: height,
         }}
       >
