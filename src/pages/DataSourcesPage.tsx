@@ -695,6 +695,8 @@ export const DataSourcesPage = () => (
           <Table aria-label="Available AAL and PML datasets">
             <TableHead>
               <TableRow>
+                {/* UNDRR: Added Status column to match other tables */}
+                <TableCell>Status</TableCell>
                 <TableCell>Priority</TableCell>
                 <TableCell>Dataset</TableCell>
                 <TableCell>Provider</TableCell>
@@ -706,6 +708,7 @@ export const DataSourcesPage = () => (
             </TableHead>
             <TableBody>
               <TableRow>
+                <TableCell>Planned</TableCell>
                 <TableCell>High</TableCell>
                 <TableCell>
                   <ExtLink href="https://giri.unepgrid.ch">
@@ -736,6 +739,7 @@ export const DataSourcesPage = () => (
                 </TableCell>
               </TableRow>
               <TableRow>
+                <TableCell>Active</TableCell>
                 <TableCell>Moderate</TableCell>
                 <TableCell>
                   <ExtLink href="https://data.humdata.org/dataset/multi-hazard-average-annual-loss">
@@ -751,14 +755,15 @@ export const DataSourcesPage = () => (
                 <TableCell>
                   <TableCellStack>
                     <TableCellParagraph>
-                      Global, country-level coverage. Available as Shapefile (17.5 MB) and Excel.
-                      Quick to ingest as vector tiles. Note: data is from 2015 and may be dated for
-                      some applications.
+                      Global, country-level coverage. Loaded as vector tiles from the GAR 2015
+                      shapefile. Select the Risk tab to view country-level AAL by hazard. Note:
+                      data is from 2015 and may be dated for some applications.
                     </TableCellParagraph>
                   </TableCellStack>
                 </TableCell>
               </TableRow>
               <TableRow>
+                <TableCell>Planned</TableCell>
                 <TableCell>High</TableCell>
                 <TableCell>
                   <ExtLink href="https://www.wri.org/data/aqueduct-floods">
@@ -782,6 +787,7 @@ export const DataSourcesPage = () => (
                 </TableCell>
               </TableRow>
               <TableRow>
+                <TableCell>Planned</TableCell>
                 <TableCell>Moderate</TableCell>
                 <TableCell>
                   <ExtLink href="https://www.globalquakemodel.org/product/global-seismic-risk-map">

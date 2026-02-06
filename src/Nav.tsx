@@ -79,9 +79,8 @@ const navItems = [
     to: '/view/exposure',
     title: 'Exposure',
   },
-  // UNDRR: Risk tab should be uncommented when AAL/PML data is loaded.
-  // Re-enable the matching section in SidebarContent.tsx.
-  // { to: '/view/risk', title: 'Risk' },
+  // UNDRR: Risk tab enabled for GAR 2015 AAL data
+  { to: '/view/risk', title: 'Risk' },
 ];
 const secondaryNavItems = [
   {

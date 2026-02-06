@@ -23,11 +23,12 @@ import {
 // import { BuildingDensityControl } from './sections/buildings/BuildingDensityControl';
 // import { IndustryControl } from './sections/industry/IndustryControl';
 // import { NetworkControl } from './sections/networks/NetworkControl';
-// UNDRR: Uncomment risk/AAL imports when AAL/PML data is loaded:
+// UNDRR: Uncomment risk/AAL imports when additional AAL/PML datasets are loaded:
 // import { InfrastructureRiskSection } from './sections/risk/infrastructure-risk';
 // import { PopulationExposureSection } from './sections/risk/population-exposure';
 // import { RegionalRiskSection } from './sections/risk/regional-risk';
-// import { EnforceSingleChildVisible } from '@/lib/data-selection/sidebar/single-child';
+import { EnforceSingleChildVisible } from '@/lib/data-selection/sidebar/single-child';
+import { GarAalSection } from './sections/risk/gar-aal';
 import { DataNotice, DataNoticeTextBlock } from './ui/DataNotice';
 import { defaultSectionVisibilitySyncEffect, SidebarUrlStateSyncRoot } from './url-state';
 
@@ -122,26 +123,31 @@ const ExposureSection = () => (
   </Section>
 );
 
-/* UNDRR: RiskSection is the AAL/PML display (EAD/EAEL). Uncomment when AAL/PML
-   data is loaded. Restore imports for EnforceSingleChildVisible,
-   PopulationExposureSection, InfrastructureRiskSection, RegionalRiskSection,
-   and uncomment the corresponding nav item in Nav.tsx.
-   See map-demo/docs/data-loading.md for instructions.
+// UNDRR: RiskSection — GAR 2015 AAL is active. Uncomment additional layers
+// as their datasets are loaded. See map-demo/docs/data-loading.md.
 const RiskSection = () => (
   <Section path="risk" title="Risk">
     <EnforceSingleChildVisible />
-    <Layer path="population" title="Population Exposure" unmountOnHide={true}>
-      <PopulationExposureSection />
+    <Layer path="gar-aal" title="Average Annual Loss (GAR)" unmountOnHide={true}>
+      <GarAalSection />
     </Layer>
-    <Layer path="infrastructure" title="Infrastructure Risk" unmountOnHide={true}>
-      <InfrastructureRiskSection />
-    </Layer>
+    {/* UNDRR: Uncomment when adm0_exposure vector data is loaded:
     <Layer path="regional" title="Regional Summary" unmountOnHide={true}>
       <RegionalRiskSection />
     </Layer>
+    */}
+    {/* UNDRR: Uncomment when population exposure data is loaded:
+    <Layer path="population" title="Population Exposure" unmountOnHide={true}>
+      <PopulationExposureSection />
+    </Layer>
+    */}
+    {/* UNDRR: Uncomment when infrastructure risk data is loaded:
+    <Layer path="infrastructure" title="Infrastructure Risk" unmountOnHide={true}>
+      <InfrastructureRiskSection />
+    </Layer>
+    */}
   </Section>
 );
-*/
 
 // UNDRR: Removed 'adaptation' — out of scope for AAL/PML focus
 const TOP_LEVEL_SECTIONS = ['hazards', 'exposure', 'vulnerability', 'risk'];
@@ -220,7 +226,7 @@ export const SidebarContent: FC<{}> = () => {
     hazard: <HazardsSection key="hazard" />,
     exposure: <ExposureSection key="exposure" />,
     vulnerability: null,
-    risk: null,
+    risk: <RiskSection key="risk" />,
   };
 
   return (

@@ -23,6 +23,7 @@ import {
   protectedAreasPointLayerState,
   protectedAreasPolygonLayerState,
 } from './data-layers/protected-areas';
+import { garAalLayerState } from './data-layers/gar-aal';
 import { regionalExposureLayerState } from './data-layers/regional-risk';
 import { rwiLayerState } from './data-layers/rwi';
 import { topographyLayersState } from './data-layers/topography';
@@ -53,6 +54,7 @@ export const viewLayersState = makeViewLayersState({
         // vector layers that cover all/most of land
         humanDevelopmentLayerState,
         regionalExposureLayerState,
+        garAalLayerState,
 
         // vector / raster layers that cover some land
         protectedAreasPolygonLayerState,
