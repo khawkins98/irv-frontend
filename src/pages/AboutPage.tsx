@@ -126,12 +126,31 @@ export const AboutPage = () => (
         <ArticleSectionHeader>Acknowledgments</ArticleSectionHeader>
 
         <ArticleParagraph>
-          The development of this platform builds on work led by the University of Oxford (the{' '}
+          This platform is built on the open-source{' '}
+          <ExtLink href="https://global.infrastructureresilience.org/about">
+            Global Infrastructure Resilience (GRI)
+          </ExtLink>{' '}
+          platform, developed by the University of Oxford (the{' '}
           <ExtLink href="https://opsis.eci.ox.ac.uk/">
             Oxford Programme for Sustainable Infrastructure Systems
           </ExtLink>
-          ), supported by a wide range of contributing technical organisations and specialists
-          that share data, analytics and expertise.
+          ) and collaborators. UNDRR leverages this open-source foundation, supported by a wide
+          range of contributing technical organisations and specialists that share data, analytics
+          and expertise.
+        </ArticleParagraph>
+
+        <ArticleParagraph>
+          The source code for this platform is available on GitHub:
+        </ArticleParagraph>
+        <ArticleParagraph>
+          <ExtLink href="https://github.com/nismod/irv-frontend">nismod/irv-frontend</ExtLink>
+          {' '}&mdash; the original GRI viewer by Oxford OPSIS
+          <br />
+          <ExtLink href="https://github.com/khawkins98/irv-frontend">khawkins98/irv-frontend</ExtLink>
+          {' '}&mdash; this UNDRR-branded fork
+          <br />
+          <ExtLink href="https://github.com/khawkins98/map-demo">khawkins98/map-demo</ExtLink>
+          {' '}&mdash; deployment orchestration and data loading
         </ArticleParagraph>
       </ArticleSection>
     </ArticleContentContainer>
