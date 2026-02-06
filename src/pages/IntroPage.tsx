@@ -29,28 +29,30 @@ export const IntroPage = () => {
           <EmphasisTextContainer>
             <MiniBar />
             <EmphasisTextParagraph>
-              The UNDRR Risk Information Platform is a data and analytics portal covering
-              hazards, exposure, vulnerability and risk to infrastructure and people around the
-              world.
+              The UNDRR Risk Information Platform visualizes multi-hazard risk across 8 natural
+              hazards &mdash; earthquake, flooding, cyclone, tsunami, extreme heat, drought, and
+              landslide &mdash; providing risk analytics for disaster risk reduction and climate
+              adaptation.
             </EmphasisTextParagraph>
 
             <EmphasisTextParagraph>
-              This tool supports disaster risk reduction and climate adaptation decision-making
-              by identifying spatial vulnerabilities and risks under current and future climate
-              scenarios.
+              Core metrics include Average Annual Loss (AAL) and Probable Maximum Loss (PML),
+              enabling governments, investors, and communities to understand and compare risk
+              across hazards, sectors, and geographies.
             </EmphasisTextParagraph>
           </EmphasisTextContainer>
           <ArticleParagraph>
-            The platform aims to support governments, communities and investors around the
-            world in reducing disaster risk and adapting to climate change by making open data
-            &ndash; related to climate hazards, exposure and vulnerabilities &ndash; available
-            for visualisation and download, to build shared understanding across different scales.
+            Built on the open-source Global Infrastructure Resilience (GRI) platform developed by
+            the Oxford Programme for Sustainable Infrastructure Systems (OPSIS) and collaborators,
+            this tool combines data from GEM (earthquake risk), GIRI/UNEP (multi-hazard
+            infrastructure risk), JRC (flooding and population), and other global datasets to
+            provide a unified view of natural hazard risk.
           </ArticleParagraph>
           <ArticleParagraph>
-            This in turn enables the identification of key opportunities as well as social
-            vulnerability and needs, providing a starting point for risk analysis. The platform
-            supports the high-level screening of the risks to both assets and populations. This may
-            help identify solutions and manage risks to society, economy and nature.
+            The platform supports high-level screening of risks to assets and populations, helping
+            to identify spatial vulnerabilities and opportunities for risk reduction. As data
+            coverage expands beyond infrastructure to include agriculture, housing, and other
+            sectors, the platform will provide increasingly comprehensive risk analytics.
           </ArticleParagraph>
           <ArticleParagraph>
             The International Panel on Climate Change (IPCC) defines risk as "the potential for
@@ -76,27 +78,25 @@ export const IntroPage = () => {
               image="./card-hazard.png"
               title="Hazard"
               href="/view/hazard"
-              text="Understand the intensity and location of weather extremes and other environmental hazards"
+              text="Explore intensity and extent maps for 8 natural hazards including earthquake, flooding, cyclone, tsunami, extreme heat, drought, and landslide"
             />
             <Card
               image="./card-exposure.png"
               href="/view/exposure"
               title="Exposure"
-              text="Map the population, infrastructure and other assets that are exposed to a variety of
-                environmental hazards"
+              text="Map the population, buildings, infrastructure, and other assets exposed to natural hazards, using global datasets from JRC, OSM, and other sources"
             />
             <Card
               image="./card-vulnerability.png"
               href="/view/vulnerability"
               title="Vulnerability"
-              text="Review indices that summarise the vulnerability of natural areas and populations"
+              text="Review indices of social vulnerability, ecosystem integrity, and adaptive capacity that shape how communities experience hazard impacts"
             />
             <Card
               image="./card-risk.png"
               href="/view/risk"
               title="Risk"
-              text="Explore analyses including direct damages to transport and power
-                infrastructure."
+              text="Analyse risk metrics including Average Annual Loss (AAL) and Probable Maximum Loss (PML) for infrastructure and populations across multiple hazards"
             />
           </Stack>
           <AppLinkButton
@@ -113,11 +113,13 @@ export const IntroPage = () => {
             <ExtLink href="https://www.undrr.org/">
               United Nations Office for Disaster Risk Reduction (UNDRR)
             </ExtLink>
-            , with data analysis and development supported by the{' '}
+            , building on the open-source Global Infrastructure Resilience (GRI) platform
+            developed by the{' '}
             <ExtLink href="https://opsis.eci.ox.ac.uk/">
-              Oxford Programme for Sustainable Infrastructure Systems
+              Oxford Programme for Sustainable Infrastructure Systems (OPSIS)
             </ExtLink>
-            .
+            . Data and analysis contributed by the Global Earthquake Model (GEM) Foundation,
+            UNEP-GRID (GIRI), and the Joint Research Centre (JRC).
           </ArticleParagraph>
 
           <Stack
@@ -134,6 +136,13 @@ export const IntroPage = () => {
                 height="60"
                 src="/logo-undrr.png"
                 alt="United Nations Office for Disaster Risk Reduction"
+              />
+            </ExtLink>
+            <ExtLink href="https://opsis.eci.ox.ac.uk">
+              <img
+                height="100"
+                src="/logo-opsis.png"
+                alt="Oxford Programme for Sustainable Infrastructure Systems"
               />
             </ExtLink>
           </Stack>
