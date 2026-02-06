@@ -24,7 +24,11 @@ import {
   protectedAreasPolygonLayerState,
 } from './data-layers/protected-areas';
 import { garAalLayerState } from './data-layers/gar-aal';
+// UNDRR: GEM Active Faults — line layer with categorical slip-type coloring
+import { gemFaultsLayerState } from './data-layers/gem-faults';
 import { regionalExposureLayerState } from './data-layers/regional-risk';
+// UNDRR: WorldRiskIndex — country-level composite risk scores
+import { wriLayerState } from './data-layers/world-risk-index';
 import { rwiLayerState } from './data-layers/rwi';
 import { topographyLayersState } from './data-layers/topography';
 import { travelTimeLayerState } from './data-layers/travel-time';
@@ -55,6 +59,7 @@ export const viewLayersState = makeViewLayersState({
         humanDevelopmentLayerState,
         regionalExposureLayerState,
         garAalLayerState,
+        wriLayerState,
 
         // vector / raster layers that cover some land
         protectedAreasPolygonLayerState,
@@ -64,6 +69,7 @@ export const viewLayersState = makeViewLayersState({
         rwiLayerState,
 
         // point/line layers
+        gemFaultsLayerState,
         networkLayersState,
         industryLayersState,
         healthcareLayersState,

@@ -29,6 +29,8 @@ import {
 // import { RegionalRiskSection } from './sections/risk/regional-risk';
 import { EnforceSingleChildVisible } from '@/lib/data-selection/sidebar/single-child';
 import { GarAalSection } from './sections/risk/gar-aal';
+// UNDRR: WorldRiskIndex — country-level risk scores (Bundnis Entwicklung Hilft / IFHV)
+import { WorldRiskIndexSection } from './sections/risk/world-risk-index';
 import { DataNotice, DataNoticeTextBlock } from './ui/DataNotice';
 import { defaultSectionVisibilitySyncEffect, SidebarUrlStateSyncRoot } from './url-state';
 
@@ -74,6 +76,15 @@ const HazardsSection = () => (
     </Layer>
     <Layer path="landslide" title="Landslide">
       <LandslideControl />
+    </Layer>
+    {/* UNDRR: GEM Global Active Faults — ~13,500 fault traces, categorical by slip type */}
+    <Layer path="active-faults" title="Active Faults (GEM)">
+      <DataNotice>
+        <DataNoticeTextBlock>
+          Global database of ~13,500 active fault traces from the GEM Foundation.
+          Faults are colored by slip type. Data: Styron &amp; Pagani (2020), CC BY-SA 4.0.
+        </DataNoticeTextBlock>
+      </DataNotice>
     </Layer>
     {/* UNDRR: Layers below are commented out because their raster data has not
         been loaded via the ETL pipeline. Uncomment and restore imports as
@@ -130,6 +141,10 @@ const RiskSection = () => (
     <EnforceSingleChildVisible />
     <Layer path="gar-aal" title="Average Annual Loss (GAR)" unmountOnHide={true}>
       <GarAalSection />
+    </Layer>
+    {/* UNDRR: WorldRiskIndex — country-level composite risk scores */}
+    <Layer path="world-risk-index" title="World Risk Index" unmountOnHide={true}>
+      <WorldRiskIndexSection />
     </Layer>
     {/* UNDRR: Uncomment when adm0_exposure vector data is loaded:
     <Layer path="regional" title="Regional Summary" unmountOnHide={true}>

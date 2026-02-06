@@ -325,6 +325,33 @@ export const DataSourcesPage = () => (
                   generated from an earlier version of the IRIS model event set.
                 </TableCell>
               </TableRow>
+              {/* UNDRR: GEM Global Active Faults — supplementary context for earthquake hazard */}
+              <TableRow>
+                <TableCell>Active</TableCell>
+                <TableCell>Active Faults</TableCell>
+                <TableCell>
+                  <ExtLink href="https://github.com/GEMScienceTools/gem-global-active-faults">
+                    GEM Global Active Faults Database
+                  </ExtLink>
+                </TableCell>
+                <TableCell>
+                  Styron, R., and Pagani, M. (2020). The GEM Global Active Faults Database.
+                  Earthquake Spectra, 36(S1), 218-239.{' '}
+                  <ExtLink href="https://doi.org/10.1177/8755293020944182">
+                    DOI 10.1177/8755293020944182
+                  </ExtLink>
+                </TableCell>
+                <TableCell>
+                  <ExtLink href="https://creativecommons.org/licenses/by-sa/4.0/">
+                    CC BY-SA 4.0
+                  </ExtLink>
+                </TableCell>
+                <TableCell>
+                  ~13,500 active fault traces worldwide, colored by slip type (Normal, Reverse,
+                  Strike-slip). Supplementary context layer for earthquake hazard. Line geometry
+                  served as vector tiles.
+                </TableCell>
+              </TableRow>
               <TableRow>
                 <TableCell>Active</TableCell>
                 <TableCell>Seismic Risk</TableCell>
@@ -758,6 +785,33 @@ export const DataSourcesPage = () => (
                       Global, country-level coverage. Loaded as vector tiles from the GAR 2015
                       shapefile. Select the Risk tab to view country-level AAL by hazard. Note:
                       data is from 2015 and may be dated for some applications.
+                    </TableCellParagraph>
+                  </TableCellStack>
+                </TableCell>
+              </TableRow>
+              {/* UNDRR: WorldRiskIndex — country-level composite risk scores */}
+              <TableRow>
+                <TableCell>Active</TableCell>
+                <TableCell>Moderate</TableCell>
+                <TableCell>
+                  <ExtLink href="https://data.humdata.org/dataset/worldriskindex">
+                    WorldRiskIndex
+                  </ExtLink>
+                </TableCell>
+                <TableCell>Bundnis Entwicklung Hilft / IFHV</TableCell>
+                <TableCell>
+                  Multi-hazard (Earthquake, Tsunami, Cyclone, Flooding, Drought, Sea Level Rise)
+                </TableCell>
+                <TableCell>
+                  Composite risk index, exposure, vulnerability sub-scores
+                </TableCell>
+                <TableCell>CC BY 4.0</TableCell>
+                <TableCell>
+                  <TableCellStack>
+                    <TableCellParagraph>
+                      Country-level, 193 countries, annual updates. Index scores (0–100), not
+                      economic losses. Complements GAR AAL with risk/vulnerability scoring
+                      dimensions.
                     </TableCellParagraph>
                   </TableCellStack>
                 </TableCell>
