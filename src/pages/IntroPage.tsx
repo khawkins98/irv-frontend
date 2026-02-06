@@ -74,23 +74,18 @@ export const IntroPage = () => {
             spacing={2}
             sx={{ margin: '32px 0 !important' }}
           >
+            {/* UNDRR: Cards reframed around AAL/PML focus; Vulnerability card removed */}
             <Card
               image="./card-hazard.png"
               title="Hazard"
               href="/view/hazard"
-              text="Explore intensity and extent maps for 8 natural hazards including earthquake, flooding, cyclone, tsunami, extreme heat, drought, and landslide"
+              text="Explore hazard intensity maps across 8 natural hazards — the foundation for computing Average Annual Loss and Probable Maximum Loss"
             />
             <Card
               image="./card-exposure.png"
               href="/view/exposure"
               title="Exposure"
-              text="Map the population, buildings, infrastructure, and other assets exposed to natural hazards, using global datasets from JRC, OSM, and other sources"
-            />
-            <Card
-              image="./card-vulnerability.png"
-              href="/view/vulnerability"
-              title="Vulnerability"
-              text="Review indices of social vulnerability, ecosystem integrity, and adaptive capacity that shape how communities experience hazard impacts"
+              text="Map the population and infrastructure assets exposed to natural hazards — key inputs for quantifying risk through AAL and PML"
             />
             <Card
               image="./card-risk.png"

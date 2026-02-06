@@ -19,29 +19,25 @@ import {
   // CoastalControl, CycloneControl, DroughtControl, ExtremeHeatControl,
   FluvialControl, LandslideControl,
 } from './sections/hazards/HazardsControl';
-// UNDRR: Uncomment as datasets are loaded:
+// UNDRR: Uncomment exposure imports as datasets are loaded:
 // import { BuildingDensityControl } from './sections/buildings/BuildingDensityControl';
 // import { IndustryControl } from './sections/industry/IndustryControl';
 // import { NetworkControl } from './sections/networks/NetworkControl';
-// import { CDDControl } from './sections/risk/CDDControl';
+// UNDRR: Uncomment risk/AAL imports when AAL/PML data is loaded:
 // import { InfrastructureRiskSection } from './sections/risk/infrastructure-risk';
 // import { PopulationExposureSection } from './sections/risk/population-exposure';
 // import { RegionalRiskSection } from './sections/risk/regional-risk';
-// import { TopographyControl } from './sections/topography/TopographyControl';
-// import { HdiControl } from './sections/vulnerability/HdiControl';
-// import { TravelTimeControl } from './sections/vulnerability/TravelTimeControl';
-// import { WdpaControls } from './sections/vulnerability/WdpaControl';
-// import { NbsAdaptationSection } from './sections/adaptation/NbsAdaptationSection';
 // import { EnforceSingleChildVisible } from '@/lib/data-selection/sidebar/single-child';
 import { DataNotice, DataNoticeTextBlock } from './ui/DataNotice';
 import { defaultSectionVisibilitySyncEffect, SidebarUrlStateSyncRoot } from './url-state';
 
+// UNDRR: Vulnerability kept to avoid runtime errors on URL navigation.
+// Adaptation removed — out of scope for AAL/PML focus.
 const viewLabels = {
   hazard: 'Hazard',
   exposure: 'Exposure',
   vulnerability: 'Vulnerability',
   risk: 'Risk',
-  adaptation: 'Adaptation Options',
 };
 
 export const sidebarVisibilityToggleState = atomFamily({
@@ -111,8 +107,8 @@ const ExposureSection = () => (
       </DataNotice>
     </Layer>
     {/* UNDRR: Layers below are commented out because their data has not been
-        loaded. Uncomment and restore imports as datasets are added.
-        See map-demo/docs/data-loading.md for instructions.
+        loaded. These are relevant to loss models — uncomment and restore imports
+        as datasets are added. See map-demo/docs/data-loading.md for instructions.
     <Layer path="buildings" title="Buildings">
       <BuildingDensityControl />
     </Layer>
@@ -122,43 +118,15 @@ const ExposureSection = () => (
     <Layer path="industry" title="Industry">
       <IndustryControl />
     </Layer>
-    <Layer path="healthsites" title="Healthcare" />
-    <Layer path="land-cover" title="Land Cover" />
-    <Layer path="topography" title="Topography">
-      <TopographyControl />
-    </Layer>
-    <Layer path="organic-carbon" title="Soil Organic Carbon" />
     */}
   </Section>
 );
 
-/* UNDRR: Sections below are commented out because their datasets have not been
-   loaded via the ETL pipeline. To re-enable, uncomment the section components,
-   restore their imports, add them back to the `sections` record in SidebarContent,
-   and uncomment the corresponding nav items in Nav.tsx.
+/* UNDRR: RiskSection is the AAL/PML display (EAD/EAEL). Uncomment when AAL/PML
+   data is loaded. Restore imports for EnforceSingleChildVisible,
+   PopulationExposureSection, InfrastructureRiskSection, RegionalRiskSection,
+   and uncomment the corresponding nav item in Nav.tsx.
    See map-demo/docs/data-loading.md for instructions.
-const VulnerabilitySection = () => (
-  <Section path="vulnerability" title="Vulnerability">
-    <Section path="human" title="People">
-      <Layer path="human-development" title="Human Development (Subnational)">
-        <HdiControl />
-      </Layer>
-      <Layer path="hdi-grid" title="Human Development (Grid)" />
-      <Layer path="rwi" title="Relative Wealth Index" />
-      <Layer path="travel-time" title="Travel Time to Healthcare">
-        <TravelTimeControl />
-      </Layer>
-    </Section>
-    <Section path="nature" title="Planet">
-      <Layer path="biodiversity-intactness" title="Biodiversity Intactness" />
-      <Layer path="forest-integrity" title="Forest Landscape Integrity" />
-      <Layer path="protected-areas" title="Protected Areas (WDPA)">
-        <WdpaControls />
-      </Layer>
-    </Section>
-  </Section>
-);
-
 const RiskSection = () => (
   <Section path="risk" title="Risk">
     <EnforceSingleChildVisible />
@@ -173,17 +141,10 @@ const RiskSection = () => (
     </Layer>
   </Section>
 );
-
-const AdaptationSection = () => (
-  <Section path="adaptation" title="Adaptation Options">
-    <Layer path="nbs" title="Nature-Based Solutions">
-      <NbsAdaptationSection />
-    </Layer>
-  </Section>
-);
 */
 
-const TOP_LEVEL_SECTIONS = ['hazards', 'exposure', 'vulnerability', 'risk', 'adaptation'];
+// UNDRR: Removed 'adaptation' — out of scope for AAL/PML focus
+const TOP_LEVEL_SECTIONS = ['hazards', 'exposure', 'vulnerability', 'risk'];
 
 const VIEW_TRANSITIONS: Record<ViewType, any> = {
   hazard: {
@@ -222,15 +183,7 @@ const VIEW_TRANSITIONS: Record<ViewType, any> = {
       hidePaths: ['risk'],
     },
   },
-  adaptation: {
-    enter: {
-      showPaths: ['adaptation', 'adaptation/nbs'],
-      hideRest: true,
-    },
-    exit: {
-      hidePaths: ['adaptation'],
-    },
-  },
+  // UNDRR: Removed adaptation — out of scope for AAL/PML focus
 };
 
 const viewTransitionEffect = ({ set }, newView, previousView) => {
@@ -262,12 +215,12 @@ export const SidebarContent: FC<{}> = () => {
     return <Alert severity="error">Unknown view!</Alert>;
   }
 
+  // UNDRR: Removed adaptation — out of scope for AAL/PML focus
   const sections: Record<ViewType, ReactElement> = {
     hazard: <HazardsSection key="hazard" />,
     exposure: <ExposureSection key="exposure" />,
     vulnerability: null,
     risk: null,
-    adaptation: null,
   };
 
   return (

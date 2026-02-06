@@ -36,23 +36,26 @@ export const DataSourcesPage = () => (
       <ArticleSection>
         <EmphasisTextContainer>
           <MiniBar />
-          {/* UNDRR: Updated intro to reflect collaborative, multi-source data approach */}
+          {/* UNDRR: Intro reframed around AAL/PML as core output */}
           <EmphasisTextParagraph>
-            This platform draws on open data from multiple global initiatives including the
-            Global Earthquake Model (GEM) Foundation, the Joint Research Centre (JRC), the
-            Global Facility for Disaster Risk Reduction (GFDRR), UNEP-GRID (GIRI), and others.
-            Data sources are listed below with full citations, licenses, and methodology notes.
+            The core output of this platform is <strong>Average Annual Loss (AAL)</strong> and{' '}
+            <strong>Probable Maximum Loss (PML)</strong> analytics — quantifying expected
+            economic and human losses from natural hazards to support disaster risk reduction
+            and resilient investment. The hazard intensity maps and exposure datasets below are
+            the inputs to these loss calculations.
           </EmphasisTextParagraph>
         </EmphasisTextContainer>
-        {/* UNDRR: Methodology overview */}
+        {/* UNDRR: Methodology overview centered on AAL/PML pipeline */}
         <ArticleParagraph>
-          The platform serves raster hazard and exposure data as Cloud-Optimized GeoTIFFs via
-          the Terracotta tile server. Hazard maps show return-period-based intensity measures
-          (flood depth, peak ground acceleration, wind speed, landslide frequency) and are being
-          progressively loaded across 8 target hazards: Earthquake, River Flooding, Coastal
-          Flooding, Tropical Cyclone, Tsunami, Extreme Heat, Drought, and Landslide. Core risk
-          analytics include Average Annual Loss (AAL) and Probable Maximum Loss (PML). Datasets
-          marked <strong>Active</strong> below are loaded and visible on the map;
+          AAL represents the long-run average loss per year across all possible events, while
+          PML captures the worst-case loss at a given probability (e.g. the 1-in-250-year loss).
+          Computing these metrics requires three inputs: hazard intensity maps (how severe?),
+          exposure data (what is at risk?), and vulnerability functions (how much damage at a
+          given intensity?). The platform draws on open data from the Global Earthquake Model
+          (GEM) Foundation, the Joint Research Centre (JRC), UNEP-GRID (GIRI), and others
+          across 8 target hazards: Earthquake, River Flooding, Coastal Flooding, Tropical
+          Cyclone, Tsunami, Extreme Heat, Drought, and Landslide. Datasets marked{' '}
+          <strong>Active</strong> below are loaded and visible on the map;
           those marked <strong>Planned</strong> are listed for reference and will be added
           as data pipelines are completed.
         </ArticleParagraph>
@@ -74,10 +77,10 @@ export const DataSourcesPage = () => (
               <Link href="#exposure">Exposure</Link>
             </li>
             <li>
-              <Link href="#vulnerability">Vulnerability</Link>
+              <Link href="#risk">Risk &amp; Loss Analytics</Link>
             </li>
             <li>
-              <Link href="#risk">Risk</Link>
+              <Link href="#aal-pml">Available AAL &amp; PML Datasets</Link>
             </li>
           </ul>
         </ArticleParagraph>
@@ -104,6 +107,12 @@ export const DataSourcesPage = () => (
       <BackToTop id="hazard" />
       <TableSectionContainer>
         <TableHeader>Hazard Data</TableHeader>
+        {/* UNDRR: Framing hazards as AAL/PML inputs */}
+        <ArticleParagraph>
+          Hazard intensity maps are the primary input to loss calculations. Each map below
+          provides return-period-based measures (flood depth, peak ground acceleration, wind
+          speed, landslide frequency) used to estimate damage at each exposed location.
+        </ArticleParagraph>
 
         <StyledTableContainer>
           <Table aria-label="simple table">
@@ -590,375 +599,20 @@ export const DataSourcesPage = () => (
                 </TableCell>
               </TableRow>
 
-              <TableRow>
-                <TableCell>Planned</TableCell>
-                <TableCell>Health site locations</TableCell>
-                <TableCell>
-                  <ExtLink href="http://healthsites.io">healthsites.io</ExtLink>
-                </TableCell>
-                <TableCell>
-                  This data was generated as an extract from the OpenStreetMap global open database
-                  (<ExtLink href="http://openstreetmap.org">openstreetmap.org</ExtLink>) by the
-                  Healthsites.io (<ExtLink href="http://healthsites.io">healthsites.io</ExtLink>)
-                  project. Data:{' '}
-                  <ExtLink href="http://opendatacommons.org/licenses/odbl/">
-                    Open Database License
-                  </ExtLink>{' '}
-                  Data credits: ©{' '}
-                  <ExtLink href="http://www.openstreetmap.org/copyright">
-                    OpenStreetMap contributors
-                  </ExtLink>
-                </TableCell>
-                <TableCell>ODbL</TableCell>
-                <TableCell>Health site locations as points/polygons</TableCell>
-              </TableRow>
-
-              <TableRow>
-                <TableCell>Planned</TableCell>
-                <TableCell>Cement and Steel Production Assets</TableCell>
-                <TableCell>
-                  <ExtLink href="https://www.cgfi.ac.uk/spatial-finance-initiative/database-downloads/">
-                    Global Databases of Cement and Iron and Steel Production Assets, Spatial Finance
-                    Initiative
-                  </ExtLink>
-                </TableCell>
-                <TableCell>
-                  <TableCellStack>
-                    <TableCellParagraph>
-                      McCarten, M., Bayaraa, M., Caldecott, B., Christiaen, C., Foster, P., Hickey,
-                      C., Kampmann, D., Layman, C., Rossi, C., Scott, K., Tang, K., Tkachenko, N.,
-                      and Yoken, D. 2021. Global Database of Cement Production Assets. Spatial
-                      Finance Initiative.
-                    </TableCellParagraph>
-                    <TableCellParagraph>
-                      McCarten, M., Bayaraa, M., Caldecott, B., Christiaen, C., Foster, P., Hickey,
-                      C., Kampmann, D., Layman, C., Rossi, C., Scott, K., Tang, K., Tkachenko, N.,
-                      and Yoken, D., 2021. Global Database of Iron and Steel Production Assets.
-                      Spatial Finance Initiative
-                    </TableCellParagraph>
-                  </TableCellStack>
-                </TableCell>
-                <TableCell>CC BY 4.0</TableCell>
-                <TableCell>Cement and Steel Asset site locations as points</TableCell>
-              </TableRow>
-
-              <TableRow>
-                <TableCell>Planned</TableCell>
-                <TableCell>Land Cover</TableCell>
-                <TableCell>
-                  <ExtLink href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-land-cover?tab=overview">
-                    ESA Land cover classification{' '}
-                  </ExtLink>
-                </TableCell>
-                <TableCell>
-                  European Space Agency Climate Change Initiative Land Cover project (2021) Land
-                  cover classification gridded maps from 1992 to present derived from satellite
-                  observations, v2.1.1. https://doi.org/10.24381/cds.006f2c9a
-                </TableCell>
-                <TableCell>ESA CCI</TableCell>
-                <TableCell>
-                  The source of these data are the ESA Climate Change Initiative and in particular
-                  its Land Cover project © ESA Climate Change Initiative Land Cover led by
-                  UCLouvain (2017), ESA Climate Change Initiative &ndash; Land Cover project 2020
-                  and EC C3S Land Cover.
-                </TableCell>
-              </TableRow>
-
-              <TableRow>
-                <TableCell>Planned</TableCell>
-                <TableCell>Topography</TableCell>
-                <TableCell>
-                  <ExtLink href="https://doi.org/10.5281/zenodo.1447210">
-                    Global DEM derivatives based on MERIT DEM
-                  </ExtLink>
-                </TableCell>
-                <TableCell>
-                  Tomislav Hengl. (2018). Global DEM derivatives at 250m, 1 km and 2 km based on the
-                  MERIT DEM (1.0) [Data set]. Zenodo. https://doi.org/10.5281/zenodo.1447210
-                </TableCell>
-                <TableCell>CC-BY-SA 4.0</TableCell>
-                <TableCell>
-                  DEM derivatives computed using SAGA GIS at 250m and using MERIT DEM (Yamazaki et
-                  al., 2017) as input. Antarctica is not included. MERIT DEM was first reprojected
-                  to 6 global tiles based on the Equi7 grid system (Bauer-Marschallinger et al.
-                  2014) and then these were used to derive all DEM derivatives. To access original
-                  DEM tiles please refer to the{' '}
-                  <ExtLink href="http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_DEM/">
-                    MERIT DEM download page
-                  </ExtLink>
-                  .
-                </TableCell>
-              </TableRow>
-
-              <TableRow>
-                <TableCell>Planned</TableCell>
-                <TableCell>Soil Organic Carbon stock</TableCell>
-                <TableCell>
-                  <ExtLink href="https://soilgrids.org/">SoilGrids 2.0</ExtLink>
-                </TableCell>
-                <TableCell>
-                  Poggio, L., de Sousa, L.M., Batjes, N.H., Heuvelink, G.B.M., Kempen, B., Ribeiro,
-                  E., Rossiter, D., 2021. SoilGrids 2.0: producing soil information for the globe
-                  with quantified spatial uncertainty. SOIL 7, 217–240.
-                  https://doi.org/10.5194/soil-7-217-2021
-                </TableCell>
-                <TableCell>CC-BY 4.0</TableCell>
-                <TableCell>
-                  Soil organic carbon content at 0-30cm, in tonnes/hectare, aggregated to 1000m
-                  grid. Soil organic carbon content (fine earth fraction) in dg/kg at 6 standard
-                  depths. Predictions were derived using a digital soil mapping approach based on
-                  Quantile Random Forest, drawing on a global compilation of soil profile data and
-                  environmental layers. This map is the result of resampling the mean SoilGrids 250
-                  m predictions (Poggio et al. 2021) for each 1000 m cell.
-                </TableCell>
-              </TableRow>
+              {/* UNDRR: Removed Health sites, Cement/Steel, Land Cover, Topography,
+                  and Soil Organic Carbon — not inputs to AAL/PML loss models */}
             </TableBody>
           </Table>
         </StyledTableContainer>
       </TableSectionContainer>
 
-      <BackToTop id="vulnerability" />
-      <TableSectionContainer>
-        <TableHeader>Vulnerability Data</TableHeader>
-
-        <StyledTableContainer>
-          <Table aria-label="simple table">
-            <TableHead>
-              <TableRow>
-                {/* UNDRR: Added Status column */}
-                <TableCell>Status</TableCell>
-                <TableCell>Dataset</TableCell>
-                <TableCell>Source</TableCell>
-                <TableCell>Citation</TableCell>
-                <TableCell>License</TableCell>
-                <TableCell>Notes</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              <TableRow>
-                <TableCell>Planned</TableCell>
-                <TableCell>Access to Healthcare</TableCell>
-                <TableCell>
-                  <ExtLink href="https://www.nature.com/articles/s41591-020-1059-1">
-                    Global maps of travel time to healthcare facilities
-                  </ExtLink>
-                </TableCell>
-                <TableCell>
-                  Weiss, D.J., Nelson, A., Vargas-Ruiz, C.A. et al. Global maps of travel time to
-                  healthcare facilities. Nat Med 26, 1835–1838 (2020). DOI:{' '}
-                  <ExtLink href="https://doi.org/10.1038/s41591-020-1059-1">
-                    10.1038/s41591-020-1059-1
-                  </ExtLink>
-                </TableCell>
-                <TableCell>CC BY 4.0</TableCell>
-                <TableCell>Motorised/non-motorised travel time on 30arcsec grid.</TableCell>
-              </TableRow>
-
-              <TableRow>
-                <TableCell>Planned</TableCell>
-                <TableCell>Human Development (Subnational)</TableCell>
-                <TableCell>
-                  <ExtLink href="https://globaldatalab.org/shdi/">
-                    Global Data Lab Sub-national human development indices
-                  </ExtLink>
-                </TableCell>
-                <TableCell>
-                  Global Data Lab (2019) Subnational Human Development Index (SHDI) Available
-                  online:{' '}
-                  <ExtLink href="https://globaldatalab.org/shdi/">globaldatalab.org/shdi</ExtLink>.
-                </TableCell>
-                <TableCell>
-                  Free for use with acknowledgement of data source:{' '}
-                  <ExtLink href="https://globaldatalab.org/termsofuse/">
-                    globaldatalab.org/termsofuse
-                  </ExtLink>
-                  .
-                </TableCell>
-                <TableCell>
-                  <TableCellStack>
-                    <TableCellParagraph>
-                      Development, Health, Education and Income indices for 186 countries, 1783
-                      sub-national regions.
-                    </TableCellParagraph>
-                    <TableCellParagraph>
-                      The SHDI is an average of the subnational values of three dimensions:
-                      education, health and standard of living. To compute the SHDI on the basis of
-                      the three dimension indices, the geometric mean of the three indices is taken.
-                      Three major data sources were used to create the SHDI database: statistical
-                      offices (including Eurostat, the statistical office of the European Union),
-                      the Area Database of the Global Data Lab, and data from the HDI website of the
-                      Human Development Report Office of the United Nations Development Program.
-                    </TableCellParagraph>
-                    <TableCellParagraph>
-                      Given that household surveys and censuses are not held every year, for many
-                      countries the indicators are only available for a restricted number of years.
-                      To obtain their values for the whole period 1990&ndash;2017, the missing
-                      information was estimated by interpolation or extrapolation techniques. This
-                      estimation process was facilitated by the fact that the UNDP Database contains
-                      the national values for all four indicators for each year in this period,
-                      which means that only the subnational variation had to be interpolated or
-                      extrapolated. For a complete list of sources and surveys used, please refer to
-                      the Area Database's Data Sources page.
-                    </TableCellParagraph>
-                  </TableCellStack>
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>Planned</TableCell>
-                <TableCell>Human Development (Grid)</TableCell>
-                <TableCell>
-                  <ExtLink href="https://www.mosaiks.org/hdi">
-                    Global High-Resolution Estimates of the United Nations Human Development Index
-                  </ExtLink>
-                </TableCell>
-                <TableCell>
-                  Sherman, L., et al. 2023. Global High-Resolution Estimates of the United Nations
-                  Human Development Index Using Satellite Imagery and Machine-learning. Working
-                  Paper Series. 31044. National Bureau of Economic Research. DOI:{' '}
-                  <ExtLink href="https://doi.org/10.3386/w31044">10.3386/w31044</ExtLink>. Available
-                  online:{' '}
-                  <ExtLink href="http://www.nber.org/papers/w31044">
-                    www.nber.org/papers/w31044
-                  </ExtLink>
-                  . Data available at:{' '}
-                  <ExtLink href="https://github.com/Global-Policy-Lab/hdi_downscaling_mosaiks">
-                    github.com/Global-Policy-Lab/hdi_downscaling_mosaiks
-                  </ExtLink>
-                  .
-                </TableCell>
-                <TableCell>MIT</TableCell>
-                <TableCell>
-                  Global estimates of United Nations Human Development Index (HDI) on a global 0.1
-                  degree grid. Developed using a generalizable machine learning downscaling
-                  technique based on satellite imagery that allows for training and prediction with
-                  observations of arbitrary shape and size. This downscales the national HDI, which
-                  is a multi-dimensional index used for measuring national development,
-                  incorporating measures of income, education and health.
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>Planned</TableCell>
-                <TableCell>Relative Wealth Index</TableCell>
-                <TableCell>
-                  <ExtLink href="https://dataforgood.facebook.com/dfg/tools/relative-wealth-index">
-                    Meta Relative Wealth Index
-                  </ExtLink>
-                </TableCell>
-                <TableCell>
-                  Chi, G., et al. 2022. Microestimates of wealth for all low- and middle-income
-                  countries. Proceedings of the National Academy of Sciences Jan 2022, 119 (3)
-                  e2113658119; DOI:{' '}
-                  <ExtLink href="https://doi.org/10.1073/pnas.2113658119">
-                    10.1073/pnas.2113658119
-                  </ExtLink>
-                  . Data available at:{' '}
-                  <ExtLink href="https://data.humdata.org/dataset/relative-wealth-index">
-                    data.humdata.org/dataset/relative-wealth-index
-                  </ExtLink>
-                  .
-                </TableCell>
-                <TableCell>CC-BY-NC 4.0</TableCell>
-                <TableCell>
-                  The Relative Wealth Index predicts the relative standard of living within
-                  countries using privacy protecting connectivity data, satellite imagery, and other
-                  novel data sources.
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>Planned</TableCell>
-                <TableCell>Biodiversity</TableCell>
-                <TableCell>
-                  <ExtLink href="https://data.nhm.ac.uk/dataset/global-map-of-the-biodiversity-intactness-index-from-newbold-et-al-2016-science/resource/8531b4dc-bd44-4586-8216-47b3b8d60e85">
-                    Biodiversity Intactness Index
-                  </ExtLink>
-                </TableCell>
-                <TableCell>
-                  Tim Newbold; Lawrence Hudson; Andy Arnell; Sara Contu et al. (2016). Map of
-                  Biodiversity Intactness Index (from Global map of the Biodiversity Intactness
-                  Index, from Newbold et al. (2016) Science) [Data set resource]. Natural History
-                  Museum. Available online at:{' '}
-                  <ExtLink href="https://data.nhm.ac.uk/dataset/global-map-of-the-biodiversity-intactness-index-from-newbold-et-al-2016-science/resource/8531b4dc-bd44-4586-8216-47b3b8d60e85">
-                    data.nhm.ac.uk
-                  </ExtLink>
-                </TableCell>
-                <TableCell>CC BY 4.0</TableCell>
-                <TableCell>3 arcsec grid</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>Planned</TableCell>
-                <TableCell>Protected Areas</TableCell>
-                <TableCell>
-                  <ExtLink href="https://www.protectedplanet.net/en/thematic-areas/wdpa?tab=WDPA">
-                    World Database of Protected Areas
-                  </ExtLink>
-                </TableCell>
-                <TableCell>
-                  UNEP-WCMC and IUCN (2022), Protected Planet: The World Database on Protected Areas
-                  (WDPA) [On-line], [October 2022], Cambridge, UK: UNEP-WCMC and IUCN. Available
-                  online:{' '}
-                  <ExtLink href="https://www.protectedplanet.net/en/thematic-areas/wdpa?tab=WDPA">
-                    www.protectedplanet.net
-                  </ExtLink>
-                  .
-                </TableCell>
-                <TableCell>
-                  No Commercial Use, No Reposting and/or Redistribution without written consent
-                </TableCell>
-                <TableCell>Protected area locations as points/polygons</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>Planned</TableCell>
-                <TableCell>Forest Integrity</TableCell>
-                <TableCell>
-                  <ExtLink href="https://www.nature.com/articles/s41467-020-19493-3">
-                    Forest Landscape Integrity Index
-                  </ExtLink>
-                </TableCell>
-                <TableCell>
-                  Grantham, H.S., Duncan, A., Evans, T.D. et al. Anthropogenic modification of
-                  forests means only 40% of remaining forests have high ecosystem integrity. Nat
-                  Commun 11, 5978 (2020). DOI:{' '}
-                  <ExtLink href="https://doi.org/10.1038/s41467-020-19493-3">
-                    10.1038/s41467-020-19493-3
-                  </ExtLink>
-                </TableCell>
-                <TableCell>Published as available with article (license not specified)</TableCell>
-                <TableCell>
-                  10 arcsec grid. Data are available at www.forestlandscapeintegrity.com. The
-                  datasets used to develop the Forest Landscape Integrity Index can be found at the
-                  following websites:{' '}
-                  <ExtLink href="http://earthenginepartners.appspot.com/science-2013-global-forest">
-                    tree cover and loss
-                  </ExtLink>
-                  ,{' '}
-                  <ExtLink href="https://data.globalforestwatch.org/datasets/f2b7de1bdde04f7a9034ecb363d71f0e">
-                    tree cover loss driver
-                  </ExtLink>
-                  ,{' '}
-                  <ExtLink href="https://data.globalforestwatch.org/datasets/potential-forest-coverage">
-                    potential forest cover
-                  </ExtLink>
-                  ,{' '}
-                  <ExtLink href="https://maps.elie.ucl.ac.be/CCI/viewer/index.php">
-                    ESA-CCI Land Cover
-                  </ExtLink>
-                  , <ExtLink href="https://www.openstreetmap.org">Open Street Maps</ExtLink>,{' '}
-                  <ExtLink href="https://lpdaac.usgs.gov/news/release-of-gfsad-30-meter-cropland-extent-products/">
-                    croplands
-                  </ExtLink>
-                  ,{' '}
-                  <ExtLink href="https://global-surface-water.appspot.com/">surface water</ExtLink>,{' '}
-                  <ExtLink href="https://www.protectedplanet.net/en">protected areas</ExtLink>.
-                </TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
-        </StyledTableContainer>
-      </TableSectionContainer>
+      {/* UNDRR: Vulnerability section removed — social/environmental context layers
+          are not inputs to AAL/PML loss models */}
 
       <BackToTop id="risk" />
       <TableSectionContainer>
-        <TableHeader>Risk Data</TableHeader>
+        {/* UNDRR: Renamed from "Risk Data" to center on AAL/PML analytics */}
+        <TableHeader>Risk &amp; Loss Analytics</TableHeader>
 
         <StyledTableContainer>
           <Table aria-label="simple table">
@@ -974,55 +628,7 @@ export const DataSourcesPage = () => (
               </TableRow>
             </TableHead>
             <TableBody>
-              <TableRow>
-                <TableCell>Planned</TableCell>
-                <TableCell>Cooling demand</TableCell>
-                <TableCell>
-                  Global CDD difference between 1.5°C and 2°C global warming scenarios.
-                </TableCell>
-                <TableCell>
-                  <TableCellStack>
-                    <TableCellParagraph>
-                      Miranda, N.D., Lizana, J., Sparrow, S.N. et al. (2023) Change in cooling
-                      degree days with global mean temperature rise increasing from 1.5°C to 2.0°C.
-                      Nature Sustainability 6, 1326-1330.{' '}
-                      <ExtLink href="https://doi.org/10.1038/s41893-023-01155-z">
-                        DOI 10.1038/s41893-023-01155-z
-                      </ExtLink>
-                    </TableCellParagraph>
-                    <TableCellParagraph>
-                      Miranda, N. D., Lizana, J., Sparrow, S. N., Wallom, D. C. H., Zachau-Walker,
-                      M., Watson, P., Khosla, R., & McCulloch, M. (2023). Changes in Cooling Degree
-                      Days (CDD) between the 1.5°C and 2.0°C global warming scenarios. University of
-                      Oxford.{' '}
-                      <ExtLink href="https://ora.ox.ac.uk/objects/uuid:8d95c423-816c-4a4f-88b6-eb7a040cb40e">
-                        https://ora.ox.ac.uk/objects/uuid:8d95c423-816c-4a4f-88b6-eb7a040cb40e
-                      </ExtLink>
-                    </TableCellParagraph>
-                  </TableCellStack>
-                </TableCell>
-                <TableCell>CC-BY</TableCell>
-                <TableCell>
-                  Absolute and relative mean increase of cooling degree days (CDDs) from 1.5°C to
-                  2°C global warming scenarios. Additionally, the standard deviation is provided.
-                  The data has a horizontal resolution of 0.833 longitude and 0.556 latitude over
-                  the land surface. These annual CDDs and standard deviation globally were
-                  calculated using an ensemble of 700 simulations per climate change scenario.
-                  Cooling degree days (CDDS) were calculated for the ensemble members using the
-                  temperature threshold of 18°C. Then, annual mean CDDs and standard deviation per
-                  coordinate across ensemble members were obtained for the 1.5°C and 2°C scenarios.
-                  Finally, absolute and relative differences between 1.5°C and 2°C were computed.
-                  The climate data, involving 700 simulations per scenario, was generated using the
-                  HadAM4P Atmosphere-only General Circulation Model (AGCM) from the UK Met Office
-                  Hadley Centre. Three scenarios were generated: historical (2006-16), 1.5°C and
-                  2°C. The simulation outputs were mean temperatures with a 6-hour timestep and a
-                  horizontal resolution of 0.833 longitude and 0.556 latitude. Simulations took
-                  place within climateprediction.net (CPDN) climate simulation, which uses the
-                  Berkeley Open Infrastructure for Network Computing (BOINC) framework. Biases in
-                  simulated temperature were identified and corrected using a quantile mapping
-                  approach.
-                </TableCell>
-              </TableRow>
+              {/* UNDRR: Removed Cooling demand row — climate adaptation metric, not AAL/PML */}
               <TableRow>
                 <TableCell>Planned</TableCell>
                 <TableCell>Population Exposure</TableCell>
@@ -1075,6 +681,136 @@ export const DataSourcesPage = () => (
           </Table>
         </StyledTableContainer>
       </TableSectionContainer>
+      {/* UNDRR: New section documenting publicly available AAL/PML datasets */}
+      <BackToTop id="aal-pml" />
+      <TableSectionContainer>
+        <TableHeader>Available AAL &amp; PML Datasets</TableHeader>
+        <ArticleParagraph>
+          The following publicly available datasets provide pre-computed AAL and/or PML estimates
+          that could be loaded into this platform. They are listed here for reference as
+          candidates for future integration.
+        </ArticleParagraph>
+
+        <StyledTableContainer>
+          <Table aria-label="Available AAL and PML datasets">
+            <TableHead>
+              <TableRow>
+                <TableCell>Priority</TableCell>
+                <TableCell>Dataset</TableCell>
+                <TableCell>Provider</TableCell>
+                <TableCell>Hazards Covered</TableCell>
+                <TableCell>Metrics</TableCell>
+                <TableCell>License</TableCell>
+                <TableCell>Notes</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              <TableRow>
+                <TableCell>High</TableCell>
+                <TableCell>
+                  <ExtLink href="https://giri.unepgrid.ch">
+                    GIRI (Global Infrastructure Risk Model)
+                  </ExtLink>
+                </TableCell>
+                <TableCell>CDRI / UNEP-GRID / CIMA Foundation</TableCell>
+                <TableCell>
+                  Earthquake, Tsunami, Tropical Cyclone, Landslide, Flood, Drought (6 of 8 target
+                  hazards)
+                </TableCell>
+                <TableCell>
+                  AAL and PML (loss exceedance curves) per infrastructure sector
+                </TableCell>
+                <TableCell>
+                  <ExtLink href="https://creativecommons.org/licenses/by/3.0/igo/">
+                    CC BY 3.0 IGO
+                  </ExtLink>
+                </TableCell>
+                <TableCell>
+                  <TableCellStack>
+                    <TableCellParagraph>
+                      243 countries/territories, 100+ geospatial layers. WMS layers via GeoServer
+                      can be consumed directly; raster layers are convertible to COGs for ingestion.
+                      Bulk download available (registration required).
+                    </TableCellParagraph>
+                  </TableCellStack>
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>Moderate</TableCell>
+                <TableCell>
+                  <ExtLink href="https://data.humdata.org/dataset/multi-hazard-average-annual-loss">
+                    GAR 2015 Multi-Hazard AAL
+                  </ExtLink>
+                </TableCell>
+                <TableCell>UNDRR (GAR Risk Atlas)</TableCell>
+                <TableCell>
+                  Earthquake, Tsunami, River Flood, Tropical Cyclone wind, Storm Surge (5 hazards)
+                </TableCell>
+                <TableCell>AAL and PML by country</TableCell>
+                <TableCell>Free non-commercial</TableCell>
+                <TableCell>
+                  <TableCellStack>
+                    <TableCellParagraph>
+                      Global, country-level coverage. Available as Shapefile (17.5 MB) and Excel.
+                      Quick to ingest as vector tiles. Note: data is from 2015 and may be dated for
+                      some applications.
+                    </TableCellParagraph>
+                  </TableCellStack>
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>High</TableCell>
+                <TableCell>
+                  <ExtLink href="https://www.wri.org/data/aqueduct-floods">
+                    WRI Aqueduct Floods Expected Annual Damage
+                  </ExtLink>
+                </TableCell>
+                <TableCell>World Resources Institute</TableCell>
+                <TableCell>River Flooding, Coastal Flooding</TableCell>
+                <TableCell>
+                  Expected Annual Damage (AAL equivalent) for urban damage, GDP, population
+                </TableCell>
+                <TableCell>Open (attribution required)</TableCell>
+                <TableCell>
+                  <TableCellStack>
+                    <TableCellParagraph>
+                      Global coverage at country/basin/state polygon level. Available as GeoPackage,
+                      Shapefile, and CSV; hazard maps also available as GeoTIFF. High suitability
+                      for hazard rasters; moderate for AAL (polygon aggregates only).
+                    </TableCellParagraph>
+                  </TableCellStack>
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>Moderate</TableCell>
+                <TableCell>
+                  <ExtLink href="https://www.globalquakemodel.org/product/global-seismic-risk-map">
+                    GEM Global Seismic Risk Map
+                  </ExtLink>
+                </TableCell>
+                <TableCell>GEM Foundation</TableCell>
+                <TableCell>Earthquake only</TableCell>
+                <TableCell>
+                  AAL (built-up area, economic losses, fatalities, homeless)
+                </TableCell>
+                <TableCell>
+                  CC BY-SA (poster); license request for data (free for non-commercial)
+                </TableCell>
+                <TableCell>
+                  <TableCellStack>
+                    <TableCellParagraph>
+                      Global coverage on ~30km hexagonal grid. Hex grid is convertible to vector
+                      tiles. License request required for data download (free for non-commercial
+                      use), which adds some friction to ingestion.
+                    </TableCellParagraph>
+                  </TableCellStack>
+                </TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </StyledTableContainer>
+      </TableSectionContainer>
+
     </ArticleContentContainer>
   </ArticleContainer>
 );
