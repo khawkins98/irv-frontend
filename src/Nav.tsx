@@ -1,6 +1,7 @@
 import Close from '@mui/icons-material/Close';
 import Menu from '@mui/icons-material/Menu';
 import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
@@ -12,6 +13,7 @@ import Toolbar from '@mui/material/Toolbar';
 import { FC, forwardRef, useCallback, useState } from 'react';
 import { NavLink as RouterNavLink, NavLinkProps as RouterNavLinkProps } from 'react-router-dom';
 
+import { mgInteractive, mgInteractiveActive, sendaiColors } from './mangrove-tokens';
 import { useIsMobile } from './use-is-mobile';
 
 const BaseLink = styled(Link)({
@@ -22,10 +24,10 @@ const BaseLink = styled(Link)({
 const DrawerLink = styled(BaseLink)({
   color: '#ffffff',
   '&:hover,&:focus': {
-    backgroundColor: '#3372a7',
+    backgroundColor: mgInteractiveActive,
   },
   '&:active,&.active': {
-    backgroundColor: '#3372a7',
+    backgroundColor: mgInteractiveActive,
   },
 }) as typeof BaseLink;
 
@@ -111,7 +113,7 @@ const MobileDrawer = styled(Drawer)({
   [`& .MuiDrawer-paper`]: {
     width: drawerWidth,
     boxSizing: 'border-box',
-    backgroundColor: '#004f91',
+    backgroundColor: mgInteractive,
   },
 });
 
@@ -187,14 +189,18 @@ export const Nav: FC<{ height: number }> = ({ height }) => {
 
   return (
     <AppBar position="fixed" elevation={0} sx={{ color: 'white' }}>
+      {/* Sendai decoration stripe */}
+      <Box sx={{ display: 'flex', height: `${topStripeHeight}px` }}>
+        <Box sx={{ flex: 1, backgroundColor: sendaiColors.red }} />
+        <Box sx={{ flex: 1, backgroundColor: sendaiColors.purple }} />
+        <Box sx={{ flex: 1, backgroundColor: sendaiColors.orange }} />
+        <Box sx={{ flex: 1, backgroundColor: sendaiColors.turquoise }} />
+      </Box>
       <Toolbar
         variant="dense"
         sx={{
-          borderTopColor: '#eb752a',
-          borderTopWidth: topStripeHeight,
-          borderTopStyle: 'solid',
-          backgroundColor: '#004f91',
-          height: height,
+          backgroundColor: mgInteractive,
+          height: height - topStripeHeight,
         }}
       >
         {isMobile ? <MobileNavContent height={height} /> : <DesktopNavContent />}

@@ -1,5 +1,7 @@
 import { createTheme } from '@mui/material/styles';
 
+import { mgFontFamily, mgFontFamilyCondensed, mgInteractive, mgText } from './mangrove-tokens';
+
 declare module '@mui/material/styles' {
   interface Palette {
     map: Palette['primary'];
@@ -13,10 +15,10 @@ declare module '@mui/material/styles' {
 export const theme = createTheme({
   palette: {
     text: {
-      primary: '#1a1a1a',
+      primary: mgText,
     },
     primary: {
-      main: '#004f91',
+      main: mgInteractive,
     },
     map: {
       main: '#ffffff',
@@ -60,10 +62,10 @@ export const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: 'Roboto, sans-serif',
+    fontFamily: mgFontFamily,
     h1: {
       fontWeight: 700,
-      fontFamily: 'Roboto Condensed, Roboto, sans-serif',
+      fontFamily: `${mgFontFamilyCondensed}, ${mgFontFamily}`,
       fontSize: '3rem',
       '@media (min-width:900px)': {
         fontSize: '4.5rem',
@@ -75,18 +77,18 @@ export const theme = createTheme({
     },
     h2: {
       fontWeight: 700,
-      fontFamily: 'Roboto, sans-serif',
+      fontFamily: mgFontFamily,
       fontSize: '1.5rem',
       margin: '0.5rem 0',
     },
     h3: {
       fontWeight: 700,
-      fontFamily: 'Roboto, sans-serif',
+      fontFamily: mgFontFamily,
       fontSize: '1.25rem',
     },
     h5: {
       fontWeight: 700,
-      fontFamily: 'Roboto, sans-serif',
+      fontFamily: mgFontFamily,
       fontSize: '1.5rem',
       letterSpacing: '-0.5px',
       margin: '1rem 0 2rem',
@@ -94,7 +96,7 @@ export const theme = createTheme({
     },
     h6: {
       fontWeight: 700,
-      fontFamily: 'Roboto, sans-serif',
+      fontFamily: mgFontFamily,
       fontSize: '1.5rem',
       letterSpacing: '-0.5px',
     },
