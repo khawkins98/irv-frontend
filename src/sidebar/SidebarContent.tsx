@@ -8,33 +8,31 @@ import { makeHierarchicalVisibilityState } from '@/lib/data-selection/make-hiera
 import { Layer } from '@/lib/data-selection/sidebar/Layer';
 import { SidebarRoot } from '@/lib/data-selection/sidebar/root';
 import { Section } from '@/lib/data-selection/sidebar/Section';
-import { EnforceSingleChildVisible } from '@/lib/data-selection/sidebar/single-child';
 import { StateEffectRootAsync } from '@/lib/recoil/state-effects/StateEffectRoot';
 import { RecoilStateFamily } from '@/lib/recoil/types';
 
 import { viewState, ViewType } from '@/state/view';
 
-import { NbsAdaptationSection } from './sections/adaptation/NbsAdaptationSection';
-import { BuildingDensityControl } from './sections/buildings/BuildingDensityControl';
 import {
-  CoastalControl,
-  CycloneControl,
-  DroughtControl,
   EarthquakeControl,
-  ExtremeHeatControl,
-  FluvialControl,
-  LandslideControl,
+  // UNDRR: Uncomment imports below as datasets are loaded via ETL:
+  // CoastalControl, CycloneControl, DroughtControl, ExtremeHeatControl,
+  // FluvialControl, LandslideControl,
 } from './sections/hazards/HazardsControl';
-import { IndustryControl } from './sections/industry/IndustryControl';
-import { NetworkControl } from './sections/networks/NetworkControl';
-import { CDDControl } from './sections/risk/CDDControl';
-import { InfrastructureRiskSection } from './sections/risk/infrastructure-risk';
-import { PopulationExposureSection } from './sections/risk/population-exposure';
-import { RegionalRiskSection } from './sections/risk/regional-risk';
-import { TopographyControl } from './sections/topography/TopographyControl';
-import { HdiControl } from './sections/vulnerability/HdiControl';
-import { TravelTimeControl } from './sections/vulnerability/TravelTimeControl';
-import { WdpaControls } from './sections/vulnerability/WdpaControl';
+// UNDRR: Uncomment as datasets are loaded:
+// import { BuildingDensityControl } from './sections/buildings/BuildingDensityControl';
+// import { IndustryControl } from './sections/industry/IndustryControl';
+// import { NetworkControl } from './sections/networks/NetworkControl';
+// import { CDDControl } from './sections/risk/CDDControl';
+// import { InfrastructureRiskSection } from './sections/risk/infrastructure-risk';
+// import { PopulationExposureSection } from './sections/risk/population-exposure';
+// import { RegionalRiskSection } from './sections/risk/regional-risk';
+// import { TopographyControl } from './sections/topography/TopographyControl';
+// import { HdiControl } from './sections/vulnerability/HdiControl';
+// import { TravelTimeControl } from './sections/vulnerability/TravelTimeControl';
+// import { WdpaControls } from './sections/vulnerability/WdpaControl';
+// import { NbsAdaptationSection } from './sections/adaptation/NbsAdaptationSection';
+// import { EnforceSingleChildVisible } from '@/lib/data-selection/sidebar/single-child';
 import { DataNotice, DataNoticeTextBlock } from './ui/DataNotice';
 import { defaultSectionVisibilitySyncEffect, SidebarUrlStateSyncRoot } from './url-state';
 
@@ -71,6 +69,12 @@ export const sidebarPathVisibilityState: RecoilStateFamily<boolean, string> =
 
 const HazardsSection = () => (
   <Section path="hazards" title="Hazards">
+    <Layer path="earthquake" title="Earthquakes">
+      <EarthquakeControl />
+    </Layer>
+    {/* UNDRR: Layers below are commented out because their raster data has not
+        been loaded via the ETL pipeline. Uncomment and restore imports as
+        datasets are added. See map-demo/docs/data-loading.md for instructions.
     <Layer path="fluvial" title="River Flooding">
       <FluvialControl />
     </Layer>
@@ -81,12 +85,6 @@ const HazardsSection = () => (
       <CycloneControl />
     </Layer>
     <Layer path="cdd" title="Cooling degree days">
-      <DataNotice>
-        <DataNoticeTextBlock>
-          Change in cooling degree days with global mean temperature rise increasing from 1.5°C to
-          2.0°C, from Miranda et al. (2023).
-        </DataNoticeTextBlock>
-      </DataNotice>
       <CDDControl />
     </Layer>
     <Layer path="extreme_heat" title="Extreme Heat">
@@ -98,10 +96,8 @@ const HazardsSection = () => (
     <Layer path="landslide" title="Landslide">
       <LandslideControl />
     </Layer>
-    <Layer path="earthquake" title="Earthquakes">
-      <EarthquakeControl />
-    </Layer>
     <Layer path="wildfire" title="Wildfires" disabled />
+    */}
   </Section>
 );
 
@@ -114,111 +110,48 @@ const ExposureSection = () => (
         </DataNoticeTextBlock>
       </DataNotice>
     </Layer>
+    {/* UNDRR: Layers below are commented out because their data has not been
+        loaded. Uncomment and restore imports as datasets are added.
+        See map-demo/docs/data-loading.md for instructions.
     <Layer path="buildings" title="Buildings">
-      <DataNotice>
-        <DataNoticeTextBlock>
-          Map shows density of built-up surface in 2020, from the JRC Global Human Settlement Layer
-          (2022).
-        </DataNoticeTextBlock>
-      </DataNotice>
       <BuildingDensityControl />
     </Layer>
     <Layer path="infrastructure" title="Infrastructure">
-      <DataNotice>
-        <DataNoticeTextBlock>
-          Map shows infrastructure networks: road and rail derived from OpenStreetMap, power from
-          Gridfinder, Arderne et al (2020).
-        </DataNoticeTextBlock>
-      </DataNotice>
       <NetworkControl />
     </Layer>
     <Layer path="industry" title="Industry">
-      <DataNotice>
-        <DataNoticeTextBlock>
-          Map shows global databases of cement, iron and steel production assets, from the Spatial
-          Finance Initiative, McCarten et al (2021).
-        </DataNoticeTextBlock>
-      </DataNotice>
       <IndustryControl />
     </Layer>
-    <Layer path="healthsites" title="Healthcare">
-      <DataNotice>
-        <DataNoticeTextBlock>
-          Map shows locations of healthcare facilities from the healthsites.io project, containing
-          data extracted from OpenStreetMap.
-        </DataNoticeTextBlock>
-      </DataNotice>
-    </Layer>
-    <Layer path="land-cover" title="Land Cover">
-      <DataNotice>
-        <DataNoticeTextBlock>
-          Map shows land cover classification gridded maps from the European Space Agency Climate
-          Change Initiative Land Cover project (2021).
-        </DataNoticeTextBlock>
-      </DataNotice>
-    </Layer>
+    <Layer path="healthsites" title="Healthcare" />
+    <Layer path="land-cover" title="Land Cover" />
     <Layer path="topography" title="Topography">
-      <DataNotice>
-        <DataNoticeTextBlock>
-          Elevation (m) and slope (°) from Hengl (2018) Global DEM derivatives at 250m based on the
-          MERIT DEM, displayed to nearest ~10m or degree.
-        </DataNoticeTextBlock>
-      </DataNotice>
       <TopographyControl />
     </Layer>
-    <Layer path="organic-carbon" title="Soil Organic Carbon">
-      <DataNotice>
-        <DataNoticeTextBlock>
-          Map shows soil organic carbon content at 0-30cm, in tonnes/hectare, aggregated to a 1000m
-          grid, from SoilGrids 2.0, Poggio et al (2021).
-        </DataNoticeTextBlock>
-      </DataNotice>
-    </Layer>
+    <Layer path="organic-carbon" title="Soil Organic Carbon" />
+    */}
   </Section>
 );
 
+/* UNDRR: Sections below are commented out because their datasets have not been
+   loaded via the ETL pipeline. To re-enable, uncomment the section components,
+   restore their imports, add them back to the `sections` record in SidebarContent,
+   and uncomment the corresponding nav items in Nav.tsx.
+   See map-demo/docs/data-loading.md for instructions.
 const VulnerabilitySection = () => (
   <Section path="vulnerability" title="Vulnerability">
     <Section path="human" title="People">
       <Layer path="human-development" title="Human Development (Subnational)">
         <HdiControl />
       </Layer>
-      <Layer path="hdi-grid" title="Human Development (Grid)">
-        <DataNotice>
-          <DataNoticeTextBlock>
-            Global estimates of United Nations Human Development Index (HDI) on a global 0.1 degree
-            grid, from Sherman, L., et al. (2023).
-          </DataNoticeTextBlock>
-        </DataNotice>
-      </Layer>
-      <Layer path="rwi" title="Relative Wealth Index">
-        <DataNotice>
-          <DataNoticeTextBlock>
-            Predicts the relative standard of living within countries using privacy protecting
-            connectivity data, satellite imagery, and other novel data sources, from Chi et al.
-            (2022).
-          </DataNoticeTextBlock>
-        </DataNotice>
-      </Layer>
+      <Layer path="hdi-grid" title="Human Development (Grid)" />
+      <Layer path="rwi" title="Relative Wealth Index" />
       <Layer path="travel-time" title="Travel Time to Healthcare">
         <TravelTimeControl />
       </Layer>
     </Section>
     <Section path="nature" title="Planet">
-      <Layer path="biodiversity-intactness" title="Biodiversity Intactness">
-        <DataNotice>
-          <DataNoticeTextBlock>
-            Map shows Biodiversity Intactness Index, from Newbold et al. (2016).
-          </DataNoticeTextBlock>
-        </DataNotice>
-      </Layer>
-      <Layer path="forest-integrity" title="Forest Landscape Integrity">
-        <DataNotice>
-          <DataNoticeTextBlock>
-            Map shows Forest Landscape Integrity Index, from Grantham et al. (2020).
-          </DataNoticeTextBlock>
-        </DataNotice>
-      </Layer>
+      <Layer path="biodiversity-intactness" title="Biodiversity Intactness" />
+      <Layer path="forest-integrity" title="Forest Landscape Integrity" />
       <Layer path="protected-areas" title="Protected Areas (WDPA)">
         <WdpaControls />
       </Layer>
@@ -248,6 +181,7 @@ const AdaptationSection = () => (
     </Layer>
   </Section>
 );
+*/
 
 const TOP_LEVEL_SECTIONS = ['hazards', 'exposure', 'vulnerability', 'risk', 'adaptation'];
 
@@ -331,18 +265,10 @@ export const SidebarContent: FC<{}> = () => {
   const sections: Record<ViewType, ReactElement> = {
     hazard: <HazardsSection key="hazard" />,
     exposure: <ExposureSection key="exposure" />,
-    vulnerability: <VulnerabilitySection key="vulnerability" />,
+    vulnerability: null,
     risk: null,
     adaptation: null,
   };
-
-  if (view === 'risk') {
-    sections['risk'] = <RiskSection key="risk" />;
-  }
-
-  if (view === 'adaptation') {
-    sections['adaptation'] = <AdaptationSection key="adaptation" />;
-  }
 
   return (
     <SidebarRoot

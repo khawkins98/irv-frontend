@@ -77,18 +77,12 @@ const navItems = [
     to: '/view/exposure',
     title: 'Exposure',
   },
-  {
-    to: '/view/vulnerability',
-    title: 'Vulnerability',
-  },
-  {
-    to: '/view/risk',
-    title: 'Risk',
-  },
-  {
-    to: '/view/adaptation',
-    title: 'Adaptation',
-  },
+  // UNDRR: Tabs below are hidden because all their layers' datasets have not
+  // been loaded. Uncomment as datasets are added, and re-enable the matching
+  // sections in SidebarContent.tsx. See map-demo/docs/data-loading.md.
+  // { to: '/view/vulnerability', title: 'Vulnerability' },
+  // { to: '/view/risk', title: 'Risk' },
+  // { to: '/view/adaptation', title: 'Adaptation' },
 ];
 const secondaryNavItems = [
   {
