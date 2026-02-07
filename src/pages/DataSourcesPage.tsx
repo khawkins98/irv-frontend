@@ -840,11 +840,12 @@ export const DataSourcesPage = () => (
                   </TableCellStack>
                 </TableCell>
               </TableRow>
+              {/* UNDRR: GEM Seismic Risk Map — layer integrated, data pending license agreement */}
               <TableRow>
-                <TableCell>Planned</TableCell>
+                <TableCell>Pending Data</TableCell>
                 <TableCell>Moderate</TableCell>
                 <TableCell>
-                  <ExtLink href="https://www.globalquakemodel.org/product/global-seismic-risk-map">
+                  <ExtLink href="https://www.globalquakemodel.org/products/global-seismic-risk-map">
                     GEM Global Seismic Risk Map
                   </ExtLink>
                 </TableCell>
@@ -859,9 +860,14 @@ export const DataSourcesPage = () => (
                 <TableCell>
                   <TableCellStack>
                     <TableCellParagraph>
-                      Global coverage on ~30km hexagonal grid. Hex grid is convertible to vector
-                      tiles. License request required for data download (free for non-commercial
-                      use), which adds some friction to ingestion.
+                      Global coverage on ~30 km hexagonal grid. The map layer is integrated and
+                      ready to display, but <strong>data is not yet available</strong> pending a
+                      license agreement with the{' '}
+                      <ExtLink href="https://www.globalquakemodel.org/products/global-seismic-risk-map">
+                        GEM Foundation
+                      </ExtLink>{' '}
+                      (free for non-commercial use). Data will appear once the license is obtained
+                      and the dataset is loaded.
                     </TableCellParagraph>
                   </TableCellStack>
                 </TableCell>

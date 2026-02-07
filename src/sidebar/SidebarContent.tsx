@@ -31,6 +31,8 @@ import { EnforceSingleChildVisible } from '@/lib/data-selection/sidebar/single-c
 import { GarAalSection } from './sections/risk/gar-aal';
 // UNDRR: WorldRiskIndex — country-level risk scores (Bundnis Entwicklung Hilft / IFHV)
 import { WorldRiskIndexSection } from './sections/risk/world-risk-index';
+// UNDRR: GEM Global Seismic Risk Map — ~30 km hexagonal grid, earthquake AAL
+import { GemRiskSection } from './sections/risk/gem-risk';
 import { DataNotice, DataNoticeTextBlock } from './ui/DataNotice';
 import { defaultSectionVisibilitySyncEffect, SidebarUrlStateSyncRoot } from './url-state';
 
@@ -145,6 +147,10 @@ const RiskSection = () => (
     {/* UNDRR: WorldRiskIndex — country-level composite risk scores */}
     <Layer path="world-risk-index" title="World Risk Index" unmountOnHide={true}>
       <WorldRiskIndexSection />
+    </Layer>
+    {/* UNDRR: GEM Global Seismic Risk Map — earthquake AAL on hexagonal grid */}
+    <Layer path="gem-risk" title="Seismic Risk (GEM)" unmountOnHide={true}>
+      <GemRiskSection />
     </Layer>
     {/* UNDRR: Uncomment when adm0_exposure vector data is loaded:
     <Layer path="regional" title="Regional Summary" unmountOnHide={true}>
