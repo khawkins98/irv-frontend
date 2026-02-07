@@ -38,25 +38,23 @@ export const DataSourcesPage = () => (
           <MiniBar />
           {/* UNDRR: Intro reframed around AAL/PML as core output */}
           <EmphasisTextParagraph>
-            The core output of this platform is <strong>Average Annual Loss (AAL)</strong> and{' '}
-            <strong>Probable Maximum Loss (PML)</strong> analytics — quantifying expected
-            economic and human losses from natural hazards to support disaster risk reduction
-            and resilient investment. The hazard intensity maps and exposure datasets below are
-            the inputs to these loss calculations.
+            This platform produces Average Annual Loss (AAL) and Probable Maximum Loss (PML)
+            estimates for economic and human losses from natural hazards. The hazard intensity
+            maps and exposure datasets below are the inputs to those loss calculations.
           </EmphasisTextParagraph>
         </EmphasisTextContainer>
         {/* UNDRR: Methodology overview centered on AAL/PML pipeline */}
         <ArticleParagraph>
-          AAL represents the long-run average loss per year across all possible events, while
-          PML captures the worst-case loss at a given probability (e.g. the 1-in-250-year loss).
-          Computing these metrics requires three inputs: hazard intensity maps (how severe?),
+          AAL is the long-run average loss per year across all possible events. PML is the
+          worst-case loss at a given probability (e.g. the 1-in-250-year loss).
+          Both require three inputs: hazard intensity maps (how severe?),
           exposure data (what is at risk?), and vulnerability functions (how much damage at a
-          given intensity?). The platform draws on open data from the Global Earthquake Model
+          given intensity?). The platform uses open data from the Global Earthquake Model
           (GEM) Foundation, the Joint Research Centre (JRC), UNEP-GRID (GIRI), and others
-          across 8 target hazards: Earthquake, River Flooding, Coastal Flooding, Tropical
+          across 8 hazards: Earthquake, River Flooding, Coastal Flooding, Tropical
           Cyclone, Tsunami, Extreme Heat, Drought, and Landslide. Datasets marked{' '}
-          <strong>Active</strong> below are loaded and visible on the map;
-          those marked <strong>Planned</strong> are listed for reference and will be added
+          <strong>Active</strong> are loaded on the map;
+          those marked <strong>Planned</strong> will be added
           as data pipelines are completed.
         </ArticleParagraph>
         <ArticleParagraph>
@@ -109,9 +107,9 @@ export const DataSourcesPage = () => (
         <TableHeader>Hazard Data</TableHeader>
         {/* UNDRR: Framing hazards as AAL/PML inputs */}
         <ArticleParagraph>
-          Hazard intensity maps are the primary input to loss calculations. Each map below
-          provides return-period-based measures (flood depth, peak ground acceleration, wind
-          speed, landslide frequency) used to estimate damage at each exposed location.
+          Loss calculations start with hazard intensity maps. Each map below gives
+          return-period-based measures (flood depth, peak ground acceleration, wind
+          speed, landslide frequency) that feed into damage estimates at each exposed location.
         </ArticleParagraph>
 
         <StyledTableContainer>

@@ -26,7 +26,7 @@ export const GuidePage = () => (
         <EmphasisTextContainer>
           <MiniBar />
           <EmphasisTextParagraph>
-            This page introduces key concepts and terminology used throughout the Risk Information Platform.
+            Concepts and terminology used throughout the Risk Information Platform.
           </EmphasisTextParagraph>
         </EmphasisTextContainer>
 

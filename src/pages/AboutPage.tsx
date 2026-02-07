@@ -37,16 +37,15 @@ export const AboutPage = () => (
           </EmphasisTextParagraph>
         </EmphasisTextContainer>
         <ArticleParagraph>
-          This platform makes open data related to climate hazards, exposure, vulnerability and
-          risk available for visualisation and download. It aims to support disaster risk
-          reduction and climate adaptation decision-making by governments, communities and
-          investors around the world.
+          This platform makes open data on climate hazards, exposure, vulnerability, and
+          risk available for visualisation and download, in support of disaster risk
+          reduction and climate adaptation.
         </ArticleParagraph>
 
         <ArticleParagraph>
-          The platform builds on research and analysis developed by the University of Oxford,
-          using globally available open data to display and provide access to information on
-          hazards, exposure and risk to infrastructure and people.
+          The platform builds on research and analysis from the University of Oxford,
+          using open data to show hazard, exposure, and risk information for infrastructure
+          and populations.
         </ArticleParagraph>
 
         <Stack
@@ -134,9 +133,8 @@ export const AboutPage = () => (
           <ExtLink href="https://opsis.eci.ox.ac.uk/">
             Oxford Programme for Sustainable Infrastructure Systems
           </ExtLink>
-          ) and collaborators. UNDRR leverages this open-source foundation, supported by a wide
-          range of contributing technical organisations and specialists that share data, analytics
-          and expertise.
+          ) and collaborators. UNDRR builds on this open-source foundation with support from
+          contributing technical organisations and specialists.
         </ArticleParagraph>
 
         <ArticleParagraph>

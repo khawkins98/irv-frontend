@@ -30,29 +30,25 @@ export const IntroPage = () => {
             <MiniBar />
             <EmphasisTextParagraph>
               The UNDRR Risk Information Platform visualizes multi-hazard risk across 8 natural
-              hazards &mdash; earthquake, flooding, cyclone, tsunami, extreme heat, drought, and
-              landslide &mdash; providing risk analytics for disaster risk reduction and climate
-              adaptation.
+              hazards: earthquake, flooding, cyclone, tsunami, extreme heat, drought, and
+              landslide.
             </EmphasisTextParagraph>
 
             <EmphasisTextParagraph>
-              Core metrics include Average Annual Loss (AAL) and Probable Maximum Loss (PML),
-              enabling governments, investors, and communities to understand and compare risk
-              across hazards, sectors, and geographies.
+              The platform reports Average Annual Loss (AAL) and Probable Maximum Loss (PML),
+              so users can compare risk across hazards, sectors, and geographies.
             </EmphasisTextParagraph>
           </EmphasisTextContainer>
           <ArticleParagraph>
             Built on the open-source Global Infrastructure Resilience (GRI) platform developed by
             the Oxford Programme for Sustainable Infrastructure Systems (OPSIS) and collaborators,
             this tool combines data from GEM (earthquake risk), GIRI/UNEP (multi-hazard
-            infrastructure risk), JRC (flooding and population), and other global datasets to
-            provide a unified view of natural hazard risk.
+            infrastructure risk), JRC (flooding and population), and other global datasets.
           </ArticleParagraph>
           <ArticleParagraph>
-            The platform supports high-level screening of risks to assets and populations, helping
-            to identify spatial vulnerabilities and opportunities for risk reduction. As data
-            coverage expands beyond infrastructure to include agriculture, housing, and other
-            sectors, the platform will provide increasingly comprehensive risk analytics.
+            The platform supports high-level screening of risks to assets and populations. Data
+            coverage is expanding beyond infrastructure to include agriculture, housing, and other
+            sectors.
           </ArticleParagraph>
           <ArticleParagraph>
             The International Panel on Climate Change (IPCC) defines risk as "the potential for
@@ -61,8 +57,8 @@ export const IntroPage = () => {
             <ExtLink href="https://www.ipcc.ch/report/ar6/wg2/chapter/chapter-16/">
               AR6 report
             </ExtLink>
-            ). Climate-related risks result from the intersection of hazards, exposure and
-            vulnerability, all of which can be explored in detail.
+            ). Climate-related risks result from the intersection of hazards, exposure, and
+            vulnerability, all of which can be explored on this platform.
           </ArticleParagraph>
 
           <Stack
@@ -79,19 +75,19 @@ export const IntroPage = () => {
               image="./card-hazard.png"
               title="Hazard"
               href="/view/hazard"
-              text="Explore hazard intensity maps across 8 natural hazards — the foundation for computing Average Annual Loss and Probable Maximum Loss"
+              text="Browse hazard intensity maps across 8 natural hazards, the input data behind AAL and PML calculations"
             />
             <Card
               image="./card-exposure.png"
               href="/view/exposure"
               title="Exposure"
-              text="Map the population and infrastructure assets exposed to natural hazards — key inputs for quantifying risk through AAL and PML"
+              text="See where population and infrastructure assets overlap with natural hazard zones"
             />
             <Card
               image="./card-risk.png"
               href="/view/risk"
               title="Risk"
-              text="Analyse risk metrics including Average Annual Loss (AAL) and Probable Maximum Loss (PML) for infrastructure and populations across multiple hazards"
+              text="View Average Annual Loss (AAL) and Probable Maximum Loss (PML) for infrastructure and populations across multiple hazards"
             />
           </Stack>
           <AppLinkButton
@@ -104,16 +100,15 @@ export const IntroPage = () => {
           </AppLinkButton>
 
           <ArticleParagraph>
-            This platform is provided by the{' '}
+            Provided by the{' '}
             <ExtLink href="https://www.undrr.org/">
               United Nations Office for Disaster Risk Reduction (UNDRR)
             </ExtLink>
-            , building on the open-source Global Infrastructure Resilience (GRI) platform
-            developed by the{' '}
+            , built on the open-source Global Infrastructure Resilience (GRI) platform from the{' '}
             <ExtLink href="https://opsis.eci.ox.ac.uk/">
               Oxford Programme for Sustainable Infrastructure Systems (OPSIS)
             </ExtLink>
-            . Data and analysis contributed by the Global Earthquake Model (GEM) Foundation,
+            . Data and analysis from the Global Earthquake Model (GEM) Foundation,
             UNEP-GRID (GIRI), and the Joint Research Centre (JRC).
           </ArticleParagraph>
 
