@@ -8,42 +8,41 @@ import { makeHierarchicalVisibilityState } from '@/lib/data-selection/make-hiera
 import { Layer } from '@/lib/data-selection/sidebar/Layer';
 import { SidebarRoot } from '@/lib/data-selection/sidebar/root';
 import { Section } from '@/lib/data-selection/sidebar/Section';
-import { EnforceSingleChildVisible } from '@/lib/data-selection/sidebar/single-child';
 import { StateEffectRootAsync } from '@/lib/recoil/state-effects/StateEffectRoot';
 import { RecoilStateFamily } from '@/lib/recoil/types';
 
 import { viewState, ViewType } from '@/state/view';
 
-import { NbsAdaptationSection } from './sections/adaptation/NbsAdaptationSection';
-import { BuildingDensityControl } from './sections/buildings/BuildingDensityControl';
 import {
-  CoastalControl,
-  CycloneControl,
-  DroughtControl,
   EarthquakeControl,
-  ExtremeHeatControl,
-  FluvialControl,
-  LandslideControl,
+  // UNDRR: Uncomment imports below as datasets are loaded via ETL:
+  // CoastalControl, CycloneControl, DroughtControl, ExtremeHeatControl,
+  FluvialControl, LandslideControl,
 } from './sections/hazards/HazardsControl';
-import { IndustryControl } from './sections/industry/IndustryControl';
-import { NetworkControl } from './sections/networks/NetworkControl';
-import { CDDControl } from './sections/risk/CDDControl';
-import { InfrastructureRiskSection } from './sections/risk/infrastructure-risk';
-import { PopulationExposureSection } from './sections/risk/population-exposure';
-import { RegionalRiskSection } from './sections/risk/regional-risk';
-import { TopographyControl } from './sections/topography/TopographyControl';
-import { HdiControl } from './sections/vulnerability/HdiControl';
-import { TravelTimeControl } from './sections/vulnerability/TravelTimeControl';
-import { WdpaControls } from './sections/vulnerability/WdpaControl';
+// UNDRR: Uncomment exposure imports as datasets are loaded:
+// import { BuildingDensityControl } from './sections/buildings/BuildingDensityControl';
+// import { IndustryControl } from './sections/industry/IndustryControl';
+// import { NetworkControl } from './sections/networks/NetworkControl';
+// UNDRR: Uncomment risk/AAL imports when additional AAL/PML datasets are loaded:
+// import { InfrastructureRiskSection } from './sections/risk/infrastructure-risk';
+// import { PopulationExposureSection } from './sections/risk/population-exposure';
+// import { RegionalRiskSection } from './sections/risk/regional-risk';
+import { EnforceSingleChildVisible } from '@/lib/data-selection/sidebar/single-child';
+import { GarAalSection } from './sections/risk/gar-aal';
+// UNDRR: WorldRiskIndex — country-level risk scores (Bundnis Entwicklung Hilft / IFHV)
+import { WorldRiskIndexSection } from './sections/risk/world-risk-index';
+// UNDRR: GEM Global Seismic Risk Map — ~30 km hexagonal grid, earthquake AAL
+import { GemRiskSection } from './sections/risk/gem-risk';
 import { DataNotice, DataNoticeTextBlock } from './ui/DataNotice';
 import { defaultSectionVisibilitySyncEffect, SidebarUrlStateSyncRoot } from './url-state';
 
+// UNDRR: Vulnerability kept to avoid runtime errors on URL navigation.
+// Adaptation removed — out of scope for AAL/PML focus.
 const viewLabels = {
   hazard: 'Hazard',
   exposure: 'Exposure',
   vulnerability: 'Vulnerability',
   risk: 'Risk',
-  adaptation: 'Adaptation Options',
 };
 
 export const sidebarVisibilityToggleState = atomFamily({
@@ -71,9 +70,27 @@ export const sidebarPathVisibilityState: RecoilStateFamily<boolean, string> =
 
 const HazardsSection = () => (
   <Section path="hazards" title="Hazards">
+    <Layer path="earthquake" title="Earthquakes">
+      <EarthquakeControl />
+    </Layer>
     <Layer path="fluvial" title="River Flooding">
       <FluvialControl />
     </Layer>
+    <Layer path="landslide" title="Landslide">
+      <LandslideControl />
+    </Layer>
+    {/* UNDRR: GEM Global Active Faults — ~13,500 fault traces, categorical by slip type */}
+    <Layer path="active-faults" title="Active Faults (GEM)">
+      <DataNotice>
+        <DataNoticeTextBlock>
+          Global database of ~13,500 active fault traces from the GEM Foundation.
+          Faults are colored by slip type. Data: Styron &amp; Pagani (2020), CC BY-SA 4.0.
+        </DataNoticeTextBlock>
+      </DataNotice>
+    </Layer>
+    {/* UNDRR: Layers below are commented out because their raster data has not
+        been loaded via the ETL pipeline. Uncomment and restore imports as
+        datasets are added. See map-demo/docs/data-loading.md for instructions.
     <Layer path="coastal" title="Coastal Flooding (Aqueduct)">
       <CoastalControl />
     </Layer>
@@ -81,12 +98,6 @@ const HazardsSection = () => (
       <CycloneControl />
     </Layer>
     <Layer path="cdd" title="Cooling degree days">
-      <DataNotice>
-        <DataNoticeTextBlock>
-          Change in cooling degree days with global mean temperature rise increasing from 1.5°C to
-          2.0°C, from Miranda et al. (2023).
-        </DataNoticeTextBlock>
-      </DataNotice>
       <CDDControl />
     </Layer>
     <Layer path="extreme_heat" title="Extreme Heat">
@@ -95,13 +106,8 @@ const HazardsSection = () => (
     <Layer path="drought" title="Droughts">
       <DroughtControl />
     </Layer>
-    <Layer path="landslide" title="Landslide">
-      <LandslideControl />
-    </Layer>
-    <Layer path="earthquake" title="Earthquakes">
-      <EarthquakeControl />
-    </Layer>
     <Layer path="wildfire" title="Wildfires" disabled />
+    */}
   </Section>
 );
 
@@ -114,142 +120,58 @@ const ExposureSection = () => (
         </DataNoticeTextBlock>
       </DataNotice>
     </Layer>
+    {/* UNDRR: Layers below are commented out because their data has not been
+        loaded. These are relevant to loss models — uncomment and restore imports
+        as datasets are added. See map-demo/docs/data-loading.md for instructions.
     <Layer path="buildings" title="Buildings">
-      <DataNotice>
-        <DataNoticeTextBlock>
-          Map shows density of built-up surface in 2020, from the JRC Global Human Settlement Layer
-          (2022).
-        </DataNoticeTextBlock>
-      </DataNotice>
       <BuildingDensityControl />
     </Layer>
     <Layer path="infrastructure" title="Infrastructure">
-      <DataNotice>
-        <DataNoticeTextBlock>
-          Map shows infrastructure networks: road and rail derived from OpenStreetMap, power from
-          Gridfinder, Arderne et al (2020).
-        </DataNoticeTextBlock>
-      </DataNotice>
       <NetworkControl />
     </Layer>
     <Layer path="industry" title="Industry">
-      <DataNotice>
-        <DataNoticeTextBlock>
-          Map shows global databases of cement, iron and steel production assets, from the Spatial
-          Finance Initiative, McCarten et al (2021).
-        </DataNoticeTextBlock>
-      </DataNotice>
       <IndustryControl />
     </Layer>
-    <Layer path="healthsites" title="Healthcare">
-      <DataNotice>
-        <DataNoticeTextBlock>
-          Map shows locations of healthcare facilities from the healthsites.io project, containing
-          data extracted from OpenStreetMap.
-        </DataNoticeTextBlock>
-      </DataNotice>
-    </Layer>
-    <Layer path="land-cover" title="Land Cover">
-      <DataNotice>
-        <DataNoticeTextBlock>
-          Map shows land cover classification gridded maps from the European Space Agency Climate
-          Change Initiative Land Cover project (2021).
-        </DataNoticeTextBlock>
-      </DataNotice>
-    </Layer>
-    <Layer path="topography" title="Topography">
-      <DataNotice>
-        <DataNoticeTextBlock>
-          Elevation (m) and slope (°) from Hengl (2018) Global DEM derivatives at 250m based on the
-          MERIT DEM, displayed to nearest ~10m or degree.
-        </DataNoticeTextBlock>
-      </DataNotice>
-      <TopographyControl />
-    </Layer>
-    <Layer path="organic-carbon" title="Soil Organic Carbon">
-      <DataNotice>
-        <DataNoticeTextBlock>
-          Map shows soil organic carbon content at 0-30cm, in tonnes/hectare, aggregated to a 1000m
-          grid, from SoilGrids 2.0, Poggio et al (2021).
-        </DataNoticeTextBlock>
-      </DataNotice>
-    </Layer>
+    */}
   </Section>
 );
 
-const VulnerabilitySection = () => (
-  <Section path="vulnerability" title="Vulnerability">
-    <Section path="human" title="People">
-      <Layer path="human-development" title="Human Development (Subnational)">
-        <HdiControl />
-      </Layer>
-      <Layer path="hdi-grid" title="Human Development (Grid)">
-        <DataNotice>
-          <DataNoticeTextBlock>
-            Global estimates of United Nations Human Development Index (HDI) on a global 0.1 degree
-            grid, from Sherman, L., et al. (2023).
-          </DataNoticeTextBlock>
-        </DataNotice>
-      </Layer>
-      <Layer path="rwi" title="Relative Wealth Index">
-        <DataNotice>
-          <DataNoticeTextBlock>
-            Predicts the relative standard of living within countries using privacy protecting
-            connectivity data, satellite imagery, and other novel data sources, from Chi et al.
-            (2022).
-          </DataNoticeTextBlock>
-        </DataNotice>
-      </Layer>
-      <Layer path="travel-time" title="Travel Time to Healthcare">
-        <TravelTimeControl />
-      </Layer>
-    </Section>
-    <Section path="nature" title="Planet">
-      <Layer path="biodiversity-intactness" title="Biodiversity Intactness">
-        <DataNotice>
-          <DataNoticeTextBlock>
-            Map shows Biodiversity Intactness Index, from Newbold et al. (2016).
-          </DataNoticeTextBlock>
-        </DataNotice>
-      </Layer>
-      <Layer path="forest-integrity" title="Forest Landscape Integrity">
-        <DataNotice>
-          <DataNoticeTextBlock>
-            Map shows Forest Landscape Integrity Index, from Grantham et al. (2020).
-          </DataNoticeTextBlock>
-        </DataNotice>
-      </Layer>
-      <Layer path="protected-areas" title="Protected Areas (WDPA)">
-        <WdpaControls />
-      </Layer>
-    </Section>
-  </Section>
-);
-
+// UNDRR: RiskSection — GAR 2015 AAL is active. Uncomment additional layers
+// as their datasets are loaded. See map-demo/docs/data-loading.md.
 const RiskSection = () => (
   <Section path="risk" title="Risk">
     <EnforceSingleChildVisible />
-    <Layer path="population" title="Population Exposure" unmountOnHide={true}>
-      <PopulationExposureSection />
+    <Layer path="gar-aal" title="Average Annual Loss (GAR)" unmountOnHide={true}>
+      <GarAalSection />
     </Layer>
-    <Layer path="infrastructure" title="Infrastructure Risk" unmountOnHide={true}>
-      <InfrastructureRiskSection />
+    {/* UNDRR: WorldRiskIndex — country-level composite risk scores */}
+    <Layer path="world-risk-index" title="World Risk Index" unmountOnHide={true}>
+      <WorldRiskIndexSection />
     </Layer>
+    {/* UNDRR: GEM Global Seismic Risk Map — earthquake AAL on hexagonal grid */}
+    <Layer path="gem-risk" title="Seismic Risk (GEM)" unmountOnHide={true}>
+      <GemRiskSection />
+    </Layer>
+    {/* UNDRR: Uncomment when adm0_exposure vector data is loaded:
     <Layer path="regional" title="Regional Summary" unmountOnHide={true}>
       <RegionalRiskSection />
     </Layer>
-  </Section>
-);
-
-const AdaptationSection = () => (
-  <Section path="adaptation" title="Adaptation Options">
-    <Layer path="nbs" title="Nature-Based Solutions">
-      <NbsAdaptationSection />
+    */}
+    {/* UNDRR: Uncomment when population exposure data is loaded:
+    <Layer path="population" title="Population Exposure" unmountOnHide={true}>
+      <PopulationExposureSection />
     </Layer>
+    */}
+    {/* UNDRR: Uncomment when infrastructure risk data is loaded:
+    <Layer path="infrastructure" title="Infrastructure Risk" unmountOnHide={true}>
+      <InfrastructureRiskSection />
+    </Layer>
+    */}
   </Section>
 );
 
-const TOP_LEVEL_SECTIONS = ['hazards', 'exposure', 'vulnerability', 'risk', 'adaptation'];
+// UNDRR: Removed 'adaptation' — out of scope for AAL/PML focus
+const TOP_LEVEL_SECTIONS = ['hazards', 'exposure', 'vulnerability', 'risk'];
 
 const VIEW_TRANSITIONS: Record<ViewType, any> = {
   hazard: {
@@ -288,15 +210,7 @@ const VIEW_TRANSITIONS: Record<ViewType, any> = {
       hidePaths: ['risk'],
     },
   },
-  adaptation: {
-    enter: {
-      showPaths: ['adaptation', 'adaptation/nbs'],
-      hideRest: true,
-    },
-    exit: {
-      hidePaths: ['adaptation'],
-    },
-  },
+  // UNDRR: Removed adaptation — out of scope for AAL/PML focus
 };
 
 const viewTransitionEffect = ({ set }, newView, previousView) => {
@@ -328,21 +242,13 @@ export const SidebarContent: FC<{}> = () => {
     return <Alert severity="error">Unknown view!</Alert>;
   }
 
+  // UNDRR: Removed adaptation — out of scope for AAL/PML focus
   const sections: Record<ViewType, ReactElement> = {
     hazard: <HazardsSection key="hazard" />,
     exposure: <ExposureSection key="exposure" />,
-    vulnerability: <VulnerabilitySection key="vulnerability" />,
-    risk: null,
-    adaptation: null,
+    vulnerability: null,
+    risk: <RiskSection key="risk" />,
   };
-
-  if (view === 'risk') {
-    sections['risk'] = <RiskSection key="risk" />;
-  }
-
-  if (view === 'adaptation') {
-    sections['adaptation'] = <AdaptationSection key="adaptation" />;
-  }
 
   return (
     <SidebarRoot

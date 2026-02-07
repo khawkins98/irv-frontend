@@ -85,17 +85,18 @@ const SimpleHazardControl = ({ type, children }) => {
   );
 };
 
+// UNDRR: JRC listed first so it defaults (Aqueduct data not loaded).
 export const FluvialControl = () => {
   const [subsections] = useState(() => [
-    {
-      subPath: 'aqueduct',
-      label: 'Aqueduct',
-      content: <FluvialAqueductSubsection />,
-    },
     {
       subPath: 'jrc',
       label: 'JRC',
       content: <FluvialJRCSubsection />,
+    },
+    {
+      subPath: 'aqueduct',
+      label: 'Aqueduct',
+      content: <FluvialAqueductSubsection />,
     },
     // {
     //   subPath: 'giri',
@@ -110,21 +111,18 @@ export const FluvialControl = () => {
   );
 };
 
+// UNDRR: Aqueduct data has not been loaded. Show a notice instead of the
+// hazard controls to avoid 500 errors from missing terracotta_aqueduct DB.
+// To restore: load Aqueduct data, then replace this with the original
+// SimpleHazardControl (see upstream nismod/irv-frontend).
 const FluvialAqueductSubsection = () => {
   return (
-    <SimpleHazardControl type="fluvial">
-      <DataNotice>
-        <DataNoticeTextBlock>
-          Map shows river flooding depths for different return periods, from WRI Aqueduct (2020).
-        </DataNoticeTextBlock>
-      </DataNotice>
-      <ReturnPeriodControl />
-      <InputRow>
-        <EpochControl />
-        <RCPControl />
-      </InputRow>
-      <GCMControl />
-    </SimpleHazardControl>
+    <DataNotice>
+      <DataNoticeTextBlock>
+        WRI Aqueduct river flooding data has not been loaded yet. Use the JRC tab for river
+        flood hazard maps. See the data loading guide for instructions on adding Aqueduct data.
+      </DataNoticeTextBlock>
+    </DataNotice>
   );
 };
 

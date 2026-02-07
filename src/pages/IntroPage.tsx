@@ -8,7 +8,6 @@ import {
   ArticleContentContainer,
   ArticleParagraph,
   ArticleSection,
-  ArticleSectionHeader,
   EmphasisTextContainer,
   EmphasisTextParagraph,
   MiniBar,
@@ -20,7 +19,7 @@ export const IntroPage = () => {
   return (
     <ArticleContainer>
       <HeadingBox>
-        <HeadingBoxText>Global Climate-Related Risk Analytics</HeadingBoxText>
+        <HeadingBoxText>Global Risk Information Platform</HeadingBoxText>
       </HeadingBox>
 
       <div className="home" style={{ height: '16rem' }}></div>
@@ -30,27 +29,26 @@ export const IntroPage = () => {
           <EmphasisTextContainer>
             <MiniBar />
             <EmphasisTextParagraph>
-              The Global Resilience Index (GRI) Risk Viewer is a data and analytics portal covering
-              hazards, exposure, vulnerability and risk to infrastructure and people around the
-              world.
+              The UNDRR Risk Information Platform visualizes multi-hazard risk across 8 natural
+              hazards: earthquake, flooding, cyclone, tsunami, extreme heat, drought, and
+              landslide.
             </EmphasisTextParagraph>
 
             <EmphasisTextParagraph>
-              This tool aims to support climate adaptation decision-making by identifying spatial
-              vulnerabilities and risks under current and future climate scenarios.
+              The platform reports Average Annual Loss (AAL) and Probable Maximum Loss (PML),
+              so users can compare risk across hazards, sectors, and geographies.
             </EmphasisTextParagraph>
           </EmphasisTextContainer>
           <ArticleParagraph>
-            The GRI Risk Viewer aims to support governments, communities and investors around the
-            world to adapt to climate change by making open data &ndash; related to climate hazards,
-            exposure and vulnerabilities &ndash; available for visualisation and download, to build
-            shared understanding across different scales.
+            Built on the open-source Global Infrastructure Resilience (GRI) platform developed by
+            the Oxford Programme for Sustainable Infrastructure Systems (OPSIS) and collaborators,
+            this tool combines data from GEM (earthquake risk), GIRI/UNEP (multi-hazard
+            infrastructure risk), JRC (flooding and population), and other global datasets.
           </ArticleParagraph>
           <ArticleParagraph>
-            This in turn enables the identification of key opportunities as well as social
-            vulnerability and needs, providing a starting point for risk analysis. The platform
-            supports the high-level screening of the risks to both assets and populations. This may
-            help identify solutions and manage risks to society, economy and nature.
+            The platform supports high-level screening of risks to assets and populations. Data
+            coverage is expanding beyond infrastructure to include agriculture, housing, and other
+            sectors.
           </ArticleParagraph>
           <ArticleParagraph>
             The International Panel on Climate Change (IPCC) defines risk as "the potential for
@@ -59,8 +57,8 @@ export const IntroPage = () => {
             <ExtLink href="https://www.ipcc.ch/report/ar6/wg2/chapter/chapter-16/">
               AR6 report
             </ExtLink>
-            ). Climate-related risks result from the intersection of hazards, exposure and
-            vulnerability, all of which can be explored in detail.
+            ). Climate-related risks result from the intersection of hazards, exposure, and
+            vulnerability, all of which can be explored on this platform.
           </ArticleParagraph>
 
           <Stack
@@ -72,31 +70,24 @@ export const IntroPage = () => {
             spacing={2}
             sx={{ margin: '32px 0 !important' }}
           >
+            {/* UNDRR: Cards reframed around AAL/PML focus; Vulnerability card removed */}
             <Card
               image="./card-hazard.png"
               title="Hazard"
               href="/view/hazard"
-              text="Understand the intensity and location of weather extremes and other environmental hazards"
+              text="Browse hazard intensity maps across 8 natural hazards, the input data behind AAL and PML calculations"
             />
             <Card
               image="./card-exposure.png"
               href="/view/exposure"
               title="Exposure"
-              text="Map the population, infrastructure and other assets that are exposed to a variety of
-                environmental hazards"
-            />
-            <Card
-              image="./card-vulnerability.png"
-              href="/view/vulnerability"
-              title="Vulnerability"
-              text="Review indices that summarise the vulnerability of natural areas and populations"
+              text="See where population and infrastructure assets overlap with natural hazard zones"
             />
             <Card
               image="./card-risk.png"
               href="/view/risk"
               title="Risk"
-              text="Explore analyses including direct damages to transport and power
-                infrastructure."
+              text="View Average Annual Loss (AAL) and Probable Maximum Loss (PML) for infrastructure and populations across multiple hazards"
             />
           </Stack>
           <AppLinkButton
@@ -109,11 +100,16 @@ export const IntroPage = () => {
           </AppLinkButton>
 
           <ArticleParagraph>
-            The research, analysis and development of this site is led by researchers in the{' '}
+            Provided by the{' '}
+            <ExtLink href="https://www.undrr.org/">
+              United Nations Office for Disaster Risk Reduction (UNDRR)
+            </ExtLink>
+            , built on the open-source Global Infrastructure Resilience (GRI) platform from the{' '}
             <ExtLink href="https://opsis.eci.ox.ac.uk/">
-              Oxford Programme for Sustainable Infrastructure Systems
-            </ExtLink>{' '}
-            at the University of Oxford.
+              Oxford Programme for Sustainable Infrastructure Systems (OPSIS)
+            </ExtLink>
+            . Data and analysis from the Global Earthquake Model (GEM) Foundation,
+            UNEP-GRID (GIRI), and the Joint Research Centre (JRC).
           </ArticleParagraph>
 
           <Stack
@@ -122,12 +118,19 @@ export const IntroPage = () => {
             divider={<Divider orientation="vertical" flexItem />}
             justifyContent="center"
             alignItems="center"
-            spacing={2}
+            spacing={4}
             mb={6}
           >
+            <ExtLink href="https://www.undrr.org/">
+              <img
+                height="60"
+                src="/logo-undrr.png"
+                alt="United Nations Office for Disaster Risk Reduction"
+              />
+            </ExtLink>
             <ExtLink href="https://opsis.eci.ox.ac.uk">
               <img
-                height="120"
+                height="100"
                 src="/logo-opsis.png"
                 alt="Oxford Programme for Sustainable Infrastructure Systems"
               />
@@ -135,14 +138,6 @@ export const IntroPage = () => {
           </Stack>
         </ArticleSection>
 
-        <ArticleSection>
-          <ArticleSectionHeader>Photo Credit</ArticleSectionHeader>
-          <ArticleParagraph>
-            Hurricane Irma, 7 September 2017. Data: MODIS/Terra (NASA WorldView). Processed by Antti
-            Lipponen (<ExtLink href="https://twitter.com/anttilip">@anttilip</ExtLink>){' '}
-            <ExtLink href="https://creativecommons.org/licenses/by/2.0/">CC-BY</ExtLink>
-          </ArticleParagraph>
-        </ArticleSection>
       </ArticleContentContainer>
     </ArticleContainer>
   );

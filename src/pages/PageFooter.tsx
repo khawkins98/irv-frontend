@@ -38,13 +38,12 @@ export const PageFooter = () => (
         alignItems="left"
       >
         <FooterNavLink to="/" sx={{ fontWeight: 600, textDecoration: 'none' }}>
-          GRI Risk Viewer
+          UNDRR Risk Information Platform
         </FooterNavLink>
         <FooterNavLink to="/about">About</FooterNavLink>
         <FooterNavLink to="/terms-of-use">Terms and Policies</FooterNavLink>
         <FooterNavLink to="/data">Data Sources</FooterNavLink>
-        <FooterExtLink href="https://github.com/nismod">GitHub</FooterExtLink>
-        <FooterExtLink href="https://opsis.eci.ox.ac.uk">OPSIS</FooterExtLink>
+        <FooterExtLink href="https://www.undrr.org/">UNDRR</FooterExtLink>
       </Stack>
     </footer>
   </Box>

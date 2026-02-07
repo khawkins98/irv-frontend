@@ -13,7 +13,7 @@ jobs:
       version: ${{ github.ref_name }}
       registry: ghcr.io
       registry-user: ${{ github.actor }}
-      image-name: nismod/irv-frontend
+      image-name: khawkins98/irv-frontend
       dockerfile-path: containers/Dockerfile-prod
     secrets: inherit
     permissions:

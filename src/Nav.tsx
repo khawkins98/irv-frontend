@@ -1,6 +1,7 @@
 import Close from '@mui/icons-material/Close';
 import Menu from '@mui/icons-material/Menu';
 import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
@@ -12,6 +13,7 @@ import Toolbar from '@mui/material/Toolbar';
 import { FC, forwardRef, useCallback, useState } from 'react';
 import { NavLink as RouterNavLink, NavLinkProps as RouterNavLinkProps } from 'react-router-dom';
 
+import { mgInteractive, mgInteractiveActive, sendaiColors } from './mangrove-tokens';
 import { useIsMobile } from './use-is-mobile';
 
 const BaseLink = styled(Link)({
@@ -22,10 +24,10 @@ const BaseLink = styled(Link)({
 const DrawerLink = styled(BaseLink)({
   color: '#ffffff',
   '&:hover,&:focus': {
-    backgroundColor: '#213621',
+    backgroundColor: mgInteractiveActive,
   },
   '&:active,&.active': {
-    backgroundColor: '#213621',
+    backgroundColor: mgInteractiveActive,
   },
 }) as typeof BaseLink;
 
@@ -77,18 +79,8 @@ const navItems = [
     to: '/view/exposure',
     title: 'Exposure',
   },
-  {
-    to: '/view/vulnerability',
-    title: 'Vulnerability',
-  },
-  {
-    to: '/view/risk',
-    title: 'Risk',
-  },
-  {
-    to: '/view/adaptation',
-    title: 'Adaptation',
-  },
+  // UNDRR: Risk tab enabled for GAR 2015 AAL data
+  { to: '/view/risk', title: 'Risk' },
 ];
 const secondaryNavItems = [
   {
@@ -117,7 +109,7 @@ const MobileDrawer = styled(Drawer)({
   [`& .MuiDrawer-paper`]: {
     width: drawerWidth,
     boxSizing: 'border-box',
-    backgroundColor: 'rgb(23,38,23)',
+    backgroundColor: mgInteractive,
   },
 });
 
@@ -135,7 +127,7 @@ const MobileNavContent: FC<{ height: number }> = ({ height }) => {
       </IconButton>
 
       <ToolbarNavLink to="/" onClick={closeDrawer}>
-        GRI Risk Viewer
+        <img src="/logo-undrr.png" alt="UNDRR" height="30" style={{ verticalAlign: 'middle', filter: 'brightness(0) invert(1)' }} />
       </ToolbarNavLink>
 
       <GrowingDivider />
@@ -166,7 +158,9 @@ const MobileNavContent: FC<{ height: number }> = ({ height }) => {
 
 const DesktopNavContent = () => (
   <>
-    <ToolbarNavLink to="/">GRI Risk Viewer</ToolbarNavLink>
+    <ToolbarNavLink to="/">
+      <img src="/logo-undrr.png" alt="UNDRR" height="30" style={{ verticalAlign: 'middle', filter: 'brightness(0) invert(1)' }} />
+    </ToolbarNavLink>
 
     {navItems.map(({ to, title }) => (
       <ToolbarNavLink key={to} to={to}>
@@ -191,14 +185,18 @@ export const Nav: FC<{ height: number }> = ({ height }) => {
 
   return (
     <AppBar position="fixed" elevation={0} sx={{ color: 'white' }}>
+      {/* Sendai decoration stripe */}
+      <Box sx={{ display: 'flex', height: `${topStripeHeight}px` }}>
+        <Box sx={{ flex: 1, backgroundColor: sendaiColors.red }} />
+        <Box sx={{ flex: 1, backgroundColor: sendaiColors.purple }} />
+        <Box sx={{ flex: 1, backgroundColor: sendaiColors.orange }} />
+        <Box sx={{ flex: 1, backgroundColor: sendaiColors.turquoise }} />
+      </Box>
       <Toolbar
         variant="dense"
         sx={{
-          borderTopColor: 'rgb(142,193,85)',
-          borderTopWidth: topStripeHeight,
-          borderTopStyle: 'solid',
-          backgroundColor: 'rgb(23,38,23)',
-          height: height,
+          backgroundColor: mgInteractive,
+          height: height - topStripeHeight,
         }}
       >
         {isMobile ? <MobileNavContent height={height} /> : <DesktopNavContent />}

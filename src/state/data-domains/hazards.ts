@@ -39,6 +39,17 @@ export const hazardDomainsConfigState = selectorFamily<DataParamGroupConfig, Haz
 
       const sourceDomains = get(rasterSourceDomainsQuery(domain));
 
+      // UNDRR: When no raster data is loaded for this hazard type, return a
+      // minimal config using defaults so the UI renders without crashing.
+      // Upstream assumes all datasets are always available.
+      if (sourceDomains.length === 0) {
+        return {
+          paramDomains: Object.fromEntries(paramNames.map((name) => [name, [defaults[name]]])),
+          paramDefaults: defaults,
+          paramDependencies: {},
+        };
+      }
+
       const uniqueDomains = _(sourceDomains)
         // get unique combinations of parameters
         .map((x) => _.pick(x, paramNames))

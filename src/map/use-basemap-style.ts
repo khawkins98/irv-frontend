@@ -58,7 +58,11 @@ export function useBasemapStyle(
     [baseStyle, backgroundConfig, showLabels],
   );
 
-  const firstLabelId = showLabels ? LABELS_LAYERS[0] : undefined;
+  // UNDRR: Only reference label layers after the base style has loaded.
+  // Without this guard, deck.gl tries to insert data layers before
+  // "watername_ocean" which doesn't exist yet, causing a crash.
+  const hasLoadedStyle = baseStyle.layers?.length > 0;
+  const firstLabelId = showLabels && hasLoadedStyle ? LABELS_LAYERS[0] : undefined;
 
   return {
     mapStyle,

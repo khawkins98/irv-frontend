@@ -5,7 +5,7 @@ import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 
 const ParagraphTypography = styled(Typography)(({ theme }) => ({
-  fontFamily: 'Georgia, Times New Roman, Times, serif',
+  fontFamily: 'Roboto, sans-serif',
   fontSize: '1rem',
   letterSpacing: '-0.5px',
   lineHeight: 1.45,

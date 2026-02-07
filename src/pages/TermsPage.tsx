@@ -74,8 +74,8 @@ export const TermsPage = () => (
         <ArticleSectionHeader>What's in these terms?</ArticleSectionHeader>
         <ArticleParagraph>
           These terms tell you the rules for using our website{' '}
-          <ExtLink href="https://global.infrastructureresilience.org">
-            https://global.infrastructureresilience.org
+          <ExtLink href="https://this website">
+            https://this website
           </ExtLink>{' '}
           (our site).
         </ArticleParagraph>
@@ -287,7 +287,7 @@ export const TermsPage = () => (
         </ArticleParagraph>
         <SuperSectionHeader>Privacy Policy</SuperSectionHeader>
         <ArticleParagraph>
-          https://global.infrastructureresilience.org (“This site”) is operated by the University of
+          https://this website (“This site”) is operated by the University of
           Oxford. We are committed to protecting the privacy and security of your personal
           information ('personal data').
         </ArticleParagraph>
@@ -568,7 +568,7 @@ export const TermsPage = () => (
           <ExtLink href="http://www.allaboutcookies.org/">http://www.allaboutcookies.org/</ExtLink>.
         </ArticleParagraph>
         <ArticleParagraph>
-          Cookies may be set either by global.infrastructureresilience.org ("first party cookies"),
+          Cookies may be set either by this website ("first party cookies"),
           or by a third party website ("third party cookies"). The tables below identifies the
           cookies we use and explains the purposes for which they are used.
         </ArticleParagraph>
@@ -609,7 +609,7 @@ export const TermsPage = () => (
                 <TableCell>Used to distinguish users.</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell>_ga_G-932WHK2NN6</TableCell>
+                <TableCell>_ga_*</TableCell>
                 <TableCell>2 years</TableCell>
                 <TableCell>Used to persist session state.</TableCell>
               </TableRow>

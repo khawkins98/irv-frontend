@@ -26,7 +26,7 @@ export const GuidePage = () => (
         <EmphasisTextContainer>
           <MiniBar />
           <EmphasisTextParagraph>
-            This page introduces key concepts and terminology used throughout the GRI Risk Viewer.
+            Concepts and terminology used throughout the Risk Information Platform.
           </EmphasisTextParagraph>
         </EmphasisTextContainer>
 
@@ -125,7 +125,7 @@ export const GuidePage = () => (
         </ArticleParagraph>
         <ArticleParagraph>
           Spatially resolved event sets are needed to calculate aggregate losses for different
-          exceedance probabilities (or return periods). The GRI Risk Viewer currently only presents
+          exceedance probabilities (or return periods). The platform currently only presents
           return period hazard maps and risk results derived from them. There are limited open
           datasets which provide spatially resolved event sets &ndash; notably for tropical
           cyclones, there are the IBTraCS historical storms, STORM and IRIS synthetic event sets.
