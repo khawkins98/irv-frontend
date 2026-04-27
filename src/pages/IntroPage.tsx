@@ -19,7 +19,7 @@ export const IntroPage = () => {
   return (
     <ArticleContainer>
       <HeadingBox>
-        <HeadingBoxText>Global Risk Information Platform</HeadingBoxText>
+        <HeadingBoxText>GRAR Metrics Facility</HeadingBoxText>
       </HeadingBox>
 
       <div className="home" style={{ height: '16rem' }}></div>
@@ -29,7 +29,7 @@ export const IntroPage = () => {
           <EmphasisTextContainer>
             <MiniBar />
             <EmphasisTextParagraph>
-              The UNDRR Risk Information Platform visualizes multi-hazard risk across 8 natural
+              The GRAR Metrics Facility visualizes multi-hazard risk across 8 natural
               hazards: earthquake, flooding, cyclone, tsunami, extreme heat, drought, and
               landslide.
             </EmphasisTextParagraph>
@@ -86,7 +86,7 @@ export const IntroPage = () => {
             <Card
               image="./card-risk.png"
               href="/view/risk"
-              title="Risk"
+              title="Risk & Resilience"
               text="View Average Annual Loss (AAL) and Probable Maximum Loss (PML) for infrastructure and populations across multiple hazards"
             />
           </Stack>

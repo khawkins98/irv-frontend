@@ -42,7 +42,7 @@ const viewLabels = {
   hazard: 'Hazard',
   exposure: 'Exposure',
   vulnerability: 'Vulnerability',
-  risk: 'Risk',
+  risk: 'Risk & Resilience',
 };
 
 export const sidebarVisibilityToggleState = atomFamily({
@@ -136,10 +136,11 @@ const ExposureSection = () => (
   </Section>
 );
 
-// UNDRR: RiskSection — GAR 2015 AAL is active. Uncomment additional layers
-// as their datasets are loaded. See map-demo/docs/data-loading.md.
+// UNDRR: Risk & Resilience section — merges risk and resilience maps into one view.
+// GAR 2015 AAL, WorldRiskIndex, and GEM Seismic Risk are active.
+// Uncomment additional layers as datasets are loaded.
 const RiskSection = () => (
-  <Section path="risk" title="Risk">
+  <Section path="risk" title="Risk & Resilience">
     <EnforceSingleChildVisible />
     <Layer path="gar-aal" title="Average Annual Loss (GAR)" unmountOnHide={true}>
       <GarAalSection />
