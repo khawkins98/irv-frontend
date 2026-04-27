@@ -1,5 +1,9 @@
 # UNDRR Risk Information Platform — Frontend
 
+> **⚠️ Archived — proof of concept only.**
+> This repository has been archived. The work here has been superseded by the production platform:
+> **[unisdr/undrr-risk-resilience-maps](https://github.com/unisdr/undrr-risk-resilience-maps)**
+
 **Exploratory proof of concept.** UNDRR-branded fork of [nismod/irv-frontend](https://github.com/nismod/irv-frontend) investigating how the GRI Risk Viewer can be rebranded for UNDRR use. Branding changes are on the [`feat/undrr-branding`](https://github.com/khawkins98/irv-frontend/tree/feat/undrr-branding) branch. Orchestration lives in [map-demo](https://github.com/khawkins98/map-demo).
 
 ## Open Source Heritage
