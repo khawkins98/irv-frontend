@@ -79,8 +79,8 @@ const navItems = [
     to: '/view/exposure',
     title: 'Exposure',
   },
-  // UNDRR: Risk tab enabled for GAR 2015 AAL data
-  { to: '/view/risk', title: 'Risk' },
+  // UNDRR: Risk & Resilience tab — combines all risk and resilience maps
+  { to: '/view/risk', title: 'Risk & Resilience' },
 ];
 const secondaryNavItems = [
   {
@@ -127,7 +127,7 @@ const MobileNavContent: FC<{ height: number }> = ({ height }) => {
       </IconButton>
 
       <ToolbarNavLink to="/" onClick={closeDrawer}>
-        <img src="/logo-undrr.png" alt="UNDRR" height="30" style={{ verticalAlign: 'middle', filter: 'brightness(0) invert(1)' }} />
+        <img src="/logo-grar.svg" alt="GRAR Metrics Facility" height="30" style={{ verticalAlign: 'middle', filter: 'brightness(0) invert(1)' }} />
       </ToolbarNavLink>
 
       <GrowingDivider />
@@ -159,7 +159,7 @@ const MobileNavContent: FC<{ height: number }> = ({ height }) => {
 const DesktopNavContent = () => (
   <>
     <ToolbarNavLink to="/">
-      <img src="/logo-undrr.png" alt="UNDRR" height="30" style={{ verticalAlign: 'middle', filter: 'brightness(0) invert(1)' }} />
+      <img src="/logo-grar.svg" alt="GRAR Metrics Facility" height="30" style={{ verticalAlign: 'middle', filter: 'brightness(0) invert(1)' }} />
     </ToolbarNavLink>
 
     {navItems.map(({ to, title }) => (
